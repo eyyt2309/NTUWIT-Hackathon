@@ -30,38 +30,12 @@ function Sidebar() {
               <span>Courses</span>
             </Link>
           </li>
-
-          {/* Projects Dropdown */}
           <li className="sidebar-item">
-            <a
-              href="#"
-              className="sidebar-link collapsed has-dropdown"
-              data-bs-toggle="collapse"
-              data-bs-target="#projectsDropdown"
-              aria-expanded="false"
-              aria-controls="projectsDropdown"
-            >
-              <i className="lni lni-books-2"></i>
+            <Link to="/projects" className="sidebar-link">
+              <i className="lni lni-user-4"></i>
               <span>Projects</span>
-            </a>
-            <ul
-              id="projectsDropdown"
-              className="sidebar-dropdown list-unstyled collapse"
-              data-bs-parent="#sidebar"
-            >
-              <li className="sidebar-item">
-                <Link to="/projects/base" className="sidebar-link">
-                  Base
-                </Link>
-              </li>
-              <li className="sidebar-item">
-                <Link to="/projects/community" className="sidebar-link">
-                  Community
-                </Link>
-              </li>
-            </ul>
+            </Link>
           </li>
-
           <li className="sidebar-item">
             <Link to="/profile" className="sidebar-link">
               <i className="lni lni-user-4"></i>

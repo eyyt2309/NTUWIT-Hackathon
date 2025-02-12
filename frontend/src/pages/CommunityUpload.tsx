@@ -1,4 +1,4 @@
 function CommunityUpload() {
-  return <div></div>;
+  return <div className="upload-container"></div>;
 }
 export default CommunityUpload;
