@@ -95,6 +95,8 @@
 
 // export default Sidebar;
 
+import { Link } from "react-router-dom";
+
 function Sidebar() {
   return (
     <aside id="sidebar">
@@ -106,8 +108,17 @@ function Sidebar() {
             className="menu-icon"
           />
         </button>
-        <div className="sidebar-logo"></div>
+        <div className="sidebar-logo">
+          <Link to="/">! Hard Coders</Link>
+        </div>
       </div>
+      <ul className="sidebar-nav">
+        <li className="sidebar-item">
+          <Link to="/dashboard" className="sidebar-link">
+          <i className=""
+          </Link>
+        </li>
+      </ul>
     </aside>
   );
 }
