@@ -5,6 +5,7 @@ import RecentProjects from "../components/RecentProjects";
 function Dashboard() {
   return (
     <div className="dashboard_container">
+      {/* add nav bar */}
       {/* <Sidebar /> */}
       <RecentProjects />
     </div>
