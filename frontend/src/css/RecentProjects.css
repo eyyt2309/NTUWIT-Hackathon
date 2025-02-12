@@ -1,0 +1,6 @@
+.recent_projects_container {
+  display: grid;
+  width: 500px;
+  height: 300px;
+  background-color: blue;
+}
