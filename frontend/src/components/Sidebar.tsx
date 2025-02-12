@@ -1,6 +1,6 @@
-import { Fragment } from "react/jsx-runtime";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "lineicons/dist/lineicons.css";
+import "../css/Sidebar.css";
 
 function Sidebar() {
   return (
@@ -8,88 +8,89 @@ function Sidebar() {
       <div className="d-flex">
         <button className="toggle-btn" type="button">
           <img
-            src="src/assets/logo_white.png"
+            src="/src/assets/logo_white.png"
             alt="whiteLogo"
             className="menu-icon"
           />
         </button>
         <div className="sidebar-logo">
-          <a href="#">! Hard Coders </a>
+          <Link to="/">! Hard Coders</Link>
         </div>
       </div>
       <ul className="sidebar-nav">
         <li className="sidebar-item">
-          <a href="dashboard.html" className="sidebar-link">
+          <Link to="/dashboard" className="sidebar-link">
             <i className="lni lni-dashboard-square-1"></i>
             <span>DashBoard</span>
-          </a>
+          </Link>
         </li>
         <li className="sidebar-item">
-          <a href="courses.html" className="sidebar-link">
+          <Link to="/courses" className="sidebar-link">
             <i className="lni lni-pen-to-square"></i>
             <span>Courses</span>
-          </a>
+          </Link>
         </li>
         <li className="sidebar-item">
           <a
             href="#"
             className="sidebar-link collapsed has-dropdown"
             data-bs-toggle="collapse"
-            data-bs-target="#courses1"
+            data-bs-target="#projectsDropdown"
             aria-expanded="false"
-            aria-controls="courses1"
+            aria-controls="projectsDropdown"
           >
             <i className="lni lni-books-2"></i>
             <span>Projects</span>
           </a>
           <ul
-            id="courses1"
+            id="projectsDropdown"
             className="sidebar-dropdown list-unstyled collapse"
             data-bs-parent="#sidebar"
           >
             <li className="sidebar-item">
-              <a href="projects.html" className="sidebar-link">
+              <Link to="/projects/base" className="sidebar-link">
                 Base
-              </a>
+              </Link>
             </li>
             <li className="sidebar-item">
-              <a href="projects.html" className="sidebar-link">
+              <Link to="/projects/community" className="sidebar-link">
                 Community
-              </a>
+              </Link>
             </li>
           </ul>
         </li>
         <li className="sidebar-item">
-          <a href="profile.html" className="sidebar-link">
+          <Link to="/profile" className="sidebar-link">
             <i className="lni lni-user-4"></i>
             <span>Profile</span>
-          </a>
+          </Link>
         </li>
         <li className="sidebar-item">
-          <a href="community-upload.html" className="sidebar-link">
+          <Link to="/community-upload" className="sidebar-link">
             <i className="lni lni-upload-1"></i>
             <span>Community Upload</span>
-          </a>
+          </Link>
         </li>
         <li className="sidebar-item">
-          <a href="collaborate.html" className="sidebar-link">
+          <Link to="/collaborate" className="sidebar-link">
             <i className="lni lni-user-multiple-4"></i>
             <span>Collaborate</span>
-          </a>
+          </Link>
         </li>
       </ul>
       <div className="sidebar-footer">
-        <a href="settings.html" className="sidebar-link">
+        <Link to="/settings" className="sidebar-link">
           <i className="lni lni-gear-1"></i>
           <span>Settings</span>
-        </a>
+        </Link>
       </div>
       <div className="sidebar-footer">
-        <a href="index.html" className="sidebar-link">
+        <Link to="/" className="sidebar-link">
           <i className="lni lni-exit"></i> <span>Logout</span>
-        </a>
+        </Link>
       </div>
     </aside>
   );
 }
+
 export default Sidebar;
