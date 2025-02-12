@@ -1,5 +1,7 @@
 import React from "react";
-import "./ProjectPage.css";
+import "../css/ProjectPage.css";
+import "../css/standard.css";
+
 
 const projects = [
     { title: "Building 2FA", tech: "Python, Flask, Twilio API", status: "Uncompleted" },
@@ -16,19 +18,22 @@ const ProjectPage: React.FC = () => {
         <div className="project-page">
             <div className="title">
                 <h1>Projects For You!</h1>
-                <p>Here us Your Profile Dashboard</p>
+                <p>Here is your project Dashboard</p>
             </div>
             <div className="projects-grid">
                 {projects.map((project, index) => (
-                    <div key={index} className={`project-card ${project.status}`}>
+                    <div key={index} className="project-card">
                         <h3>{project.title}</h3>
                         <p>{project.tech}</p>
-                        <span className={`status ${project.status}`}>{project.status.replace("-", " ").toUpperCase()}</span>
+                        <span className={`status ${project.status.toLowerCase()}`}>
+                            {project.status.toUpperCase()}
+                        </span>
                     </div>
                 ))}
             </div>
         </div>
     );
 };
+
 
 export default ProjectPage;
