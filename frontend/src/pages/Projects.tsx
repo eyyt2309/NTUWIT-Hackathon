@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import "../css/ProjectBase.css";
+import "../css/Projects.css";
 
-function ProjectsBase() {
+function Projects() {
   useEffect(() => {
     console.log("ProjectsBase mounted!"); // Debugging Log
   }, []);
@@ -29,7 +29,6 @@ function ProjectsBase() {
 
   return (
     <div className="project-page">
-      <h1>Projects For You!</h1>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className={`project-card ${project.status}`}>
@@ -43,4 +42,4 @@ function ProjectsBase() {
   );
 }
 
-export default ProjectsBase;
+export default Projects;
