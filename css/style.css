@@ -43,25 +43,6 @@ body {
     width: 40px; /* Adjust as needed */
     height: auto;
 }
-.image-container {
-    display: flex;
-    gap: 20px; /* Adjust spacing between images */
-    justify-content: start; /* Align images to the left */
-}
-
-.image-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.dashboard-imgs{
-    width: 150px; /* Adjust as needed */
-    height: 300px;
-    border-radius: 8px;
-    object-fit: cover;
-    display: flex;
-}
-
 
 .wrapper {
     display: flex;
@@ -180,3 +161,69 @@ a.sidebar-link:hover {
     transform: rotate(45deg);
     transition: all .2s ease-out;
 }
+
+
+.grid-wrapper{
+    display: grid;
+    grid-template-columns: 800px 800px ;
+    grid-template-rows: 450px 400px ;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+  }
+
+.box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+.image-container {
+    display: flex;
+    gap: 20px; /* Adjust spacing between images */
+    justify-content: center; /* Align images to the left */
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-imgs{
+    width: 150px; /* Adjust as needed */
+    height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: flex;
+}
+.grid-headers{
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.dashboard-stats-wrapper{
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: [col1-start] 300px  [col2-start] 200px  [col3-start] 300px [col3-end];
+    grid-template-rows: [row1-start] 200px [row2-start] 200px [row2-end];
+    background-color: #fff;
+    color: #444;
+}
+.a {
+    grid-column: col1-start / col3-start;
+    grid-row: row1-start ;
+  }
+  .b {
+    grid-column: col1-start / col3-start;
+    grid-row: row2-start ;
+  }
+  .c {
+    grid-column: col3-start ;
+    grid-row: row1-start / row2-end;
+  }
+
