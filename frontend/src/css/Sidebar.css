@@ -1,12 +1,14 @@
 .sidebar {
-  width: 200px; /* Increased width for better text visibility */
-  height: 100vh;
+  position: fixed; /* Fixes sidebar to the side */
+  top: 0;
+  left: 0;
+  width: 200px; /* Adjust width as needed */
+  height: 100vh; /* Ensures full height */
   background-color: gray;
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: flex-start;
-  text-align: left; /* Align text to the left */
-  padding: 20px 10px; /* Space around the sidebar */
+  flex-direction: column; /* Stack items */
+  padding: 20px;
+  overflow-y: auto; /* Allows scrolling in the sidebar */
 }
 
 .menu-icon {
