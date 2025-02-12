@@ -1,4 +1,4 @@
-import "./app.css";
+import "./css/standard.css";
 import {
   BrowserRouter as Router,
   Routes,
