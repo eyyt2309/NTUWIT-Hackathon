@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { EditorView } from "@codemirror/view";
-import { EditorState } from "@codemirror/state";
-import { basicSetup } from "codemirror";
+import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
-import { Controlled as CodeMirror } from "@uiw/react-codemirror";
-import "../css/CodeEditor.css"; // Ensure you create this CSS file
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import "../css/CodeEditor.css"; // Ensure this CSS file exists
 
 function CodeEditor() {
   const [code, setCode] = useState("// Write your code here...");
@@ -15,9 +13,9 @@ function CodeEditor() {
       <div className="editor-wrapper">
         <CodeMirror
           value={code}
+          extensions={[javascript()]} // Corrected extensions import
+          theme={vscodeDark} // Added a theme for better visibility
           height="300px"
-          theme="dark"
-          extensions={[javascript()]}
           onChange={(value) => setCode(value)}
         />
       </div>
