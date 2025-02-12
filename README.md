@@ -8,5 +8,4 @@ npm run dev
 
 Backend:
 cd backend
-env\Scripts\activate
-pip install
+pip install Flask

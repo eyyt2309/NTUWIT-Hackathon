@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify
 import requests
+import firebase_admin
+from firebase_admin import credentials
 
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
 app = Flask(__name__)
 # Flask routing to get latitude and longitude
 
-@app.route('/', methods=['GET'])
+@app.route('/hello', methods=['GET'])
 def index():
     return "hello world"
 
