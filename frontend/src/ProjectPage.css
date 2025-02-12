@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+.title {
+    text-align: left;
+}
+
 .project-page {
     padding: 20px;
     font-family: 'Poppins', sans-serif;
@@ -14,8 +18,8 @@
 
 .project-card {
     background: white;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 70px;
+    border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: transform 0.2s ease-in-out;
@@ -24,30 +28,35 @@
 
 .project-card:hover {
     transform: scale(1.05);
+    color: #66cc66;
 }
 
 .status {
     position: absolute;
-    top: 10px;
+    top: 2px;
     right: 10px;
-    padding: 5px 10px;
+    padding: 3px 7px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 5px;
     font-weight: bold;
 }
 
-.upcoming {
+.status.Upcoming {
     background-color: #e0b3ff;
+    color: white;
 }
 
-.in-progress {
+.status.InProgress {
     background-color: #ff981a;
+    color: white;
 }
 
-.uncompleted {
+.status.Uncompleted {
     background-color: #7c7c7c;
+    color: white;
 }
 
-.completed {
+.status.Completed {
     background-color: #66cc66;
+    color: white;
 }
