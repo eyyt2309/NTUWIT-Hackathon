@@ -23,7 +23,10 @@ li {
 h1 {
     font-weight: 600;
     font-size: 1.5rem;
+    margin-top: 30px;
+    padding-left: 10px;
 }
+
 h2 {
     font-weight: 600;
     font-size: 1.2rem;
@@ -35,6 +38,7 @@ h3 {
 p {
     font-weight: 100;
     font-size: 0.8rem;
+    padding: 10px;
 }
 body {
     font-family: 'Poppins', sans-serif;
@@ -162,8 +166,11 @@ a.sidebar-link:hover {
     transition: all .2s ease-out;
 }
 
-
-.grid-wrapper{
+.title-container {
+    height: 150px;
+    margin: 0 auto;
+  }
+.grid-wrapper-four{
     display: grid;
     grid-template-columns: 800px 800px ;
     grid-template-rows: 450px 400px ;
@@ -171,7 +178,15 @@ a.sidebar-link:hover {
     background-color: #fff;
     color: #444;
   }
-
+  .grid-wrapper-three-col {
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    grid-template-rows: 400px 400px;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+    justify-content: center;
+  }
 .box {
     background-color: #444;
     color: #fff;
