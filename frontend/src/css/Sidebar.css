@@ -1,14 +1,44 @@
 .sidebar {
-  width: 90px;
-  height: 150vh;
+  width: 200px; /* Increased width for better text visibility */
+  height: 100vh;
   background-color: gray;
   display: flex;
-  padding: 0px;
-  margin: 0px;
+  flex-direction: column; /* Stack items vertically */
   justify-content: flex-start;
+  text-align: left; /* Align text to the left */
+  padding: 20px 10px; /* Space around the sidebar */
 }
 
 .menu-icon {
   width: 50px;
   height: 50px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  padding: 7px 0px; /* Better spacing for list items */
+  display: block;
+}
+
+.sidebar-link {
+  display: block; /* Ensures each link takes full width */
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 2px 0;
+  width: 100%; /* Full width so text stays aligned */
+}
+
+.sidebar-dropdown {
+  padding-left: 20px; /* Indents sub-items */
+  margin-top: 5px; /* Adds spacing between parent & child */
+}
+
+.sidebar-dropdown .sidebar-item {
+  padding: 0px; /* Further indent nested items */
 }

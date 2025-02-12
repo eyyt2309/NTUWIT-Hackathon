@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Courses from "./pages/Courses";
 import ProjectsBase from "./pages/ProjectsBase";
@@ -18,6 +23,7 @@ function App() {
           <Sidebar />
           <div className="container-fluid p-4">
             <Routes>
+              <Route path="/" element={<Navigate replace to="/dashboard" />} />
               <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/projects/base" element={<ProjectsBase />} />

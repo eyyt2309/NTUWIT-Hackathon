@@ -1,7 +1,11 @@
 import "../css/Dashboard.css";
 
 function Dashboard() {
-  return <div></div>;
+  return (
+    <div className="dashboard_container">
+      <div className="navbar"></div>
+    </div>
+  );
 }
 
 export default Dashboard;
