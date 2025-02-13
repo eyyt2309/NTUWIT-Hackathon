@@ -14,6 +14,20 @@
             "database": "ntuwit",
             "username": "ntu_user",
             "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "REMOVED",
+            "port": 23680,
+            "driver": "MySQL",
+            "database": "REMOVED",
+            "username": "REMOVED",
+            "password": "REMOVED",
+            "name": "ntuwit2"
         }
     ]
 }
