@@ -2,8 +2,6 @@ import { useState } from "react";
 import "../css/CommunityUpload.css";
 import CodeEditor from "../components/CodeEditor";
 
-function CommunityUpload() {
-  const [isPrivate, setIsPrivate] = useState(false);
 
 function CommunityUpload() {
   const [isPrivate, setIsPrivate] = useState(false);
@@ -102,4 +100,5 @@ function CommunityUpload() {
     </>
   );
 }
+
 export default CommunityUpload;
