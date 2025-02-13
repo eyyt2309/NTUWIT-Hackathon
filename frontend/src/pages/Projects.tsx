@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import "../css/Projects.css";
+import "../css/standard.css";
+
 
 function Projects() {
   useEffect(() => {

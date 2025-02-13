@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 ::after,
 ::before {
@@ -31,20 +32,25 @@ h2 {
     font-weight: 600;
     font-size: 1.2rem;
 }
+
 h3 {
     font-weight: 600;
     font-size: 1.0rem;
 }
+
 p {
     font-weight: 100;
     font-size: 0.8rem;
     padding: 10px;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
 }
-.menu-icon{
-    width: 40px; /* Adjust as needed */
+
+.menu-icon {
+    width: 40px;
+    /* Adjust as needed */
     height: auto;
 }
 
@@ -55,7 +61,6 @@ body {
 .main {
     min-height: 100vh;
     width: 100%;
-    overflow: hidden;
     transition: all 0.35s ease-in-out;
     background-color: #fafbfe;
 }
@@ -173,10 +178,10 @@ a.sidebar-link:hover {
     justify-content: space-between;
     align-items: center;
 
-  }
-  
+}
+
 .search {
-    /* flex-grow: 1;    */  
+    /* flex-grow: 1;    */
     display: flex;
     align-items: center;
     outline: black;
@@ -211,15 +216,16 @@ a.sidebar-link:hover {
     color: white;
 }
 
-.grid-wrapper-four{
+.grid-wrapper-four {
     display: grid;
-    grid-template-columns: 800px 800px ;
-    grid-template-rows: 450px 400px ;
+    grid-template-columns: 800px 800px;
+    grid-template-rows: 450px 400px;
     grid-gap: 10px;
     background-color: #fff;
     color: #444;
-  }
-  .grid-wrapper-three-col {
+}
+
+.grid-wrapper-three-col {
     display: grid;
     grid-template-columns: 400px 400px 400px;
     grid-template-rows: 400px 400px;
@@ -227,7 +233,8 @@ a.sidebar-link:hover {
     background-color: #fff;
     color: #444;
     justify-content: center;
-  }
+}
+
 .box {
     background-color: #444;
     color: #fff;
@@ -237,11 +244,14 @@ a.sidebar-link:hover {
     margin-right: 30px;
     margin-top: 15px;
     margin-bottom: 15px;
-  }
+}
+
 .image-container {
     display: flex;
-    gap: 20px; /* Adjust spacing between images */
-    justify-content: center; /* Align images to the left */
+    gap: 20px;
+    /* Adjust spacing between images */
+    justify-content: center;
+    /* Align images to the left */
 }
 
 .image-item {
@@ -250,35 +260,41 @@ a.sidebar-link:hover {
     align-items: center;
 }
 
-.dashboard-imgs{
-    width: 150px; /* Adjust as needed */
+.dashboard-imgs {
+    width: 150px;
+    /* Adjust as needed */
     height: 300px;
     border-radius: 8px;
     object-fit: cover;
     display: flex;
 }
-.grid-headers{
+
+.grid-headers {
     font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
-.dashboard-stats-wrapper{
+
+.dashboard-stats-wrapper {
     display: grid;
     grid-gap: 0px;
-    grid-template-columns: [col1-start] 300px  [col2-start] 200px  [col3-start] 300px [col3-end];
+    grid-template-columns: [col1-start] 300px [col2-start] 200px [col3-start] 300px [col3-end];
     grid-template-rows: [row1-start] 200px [row2-start] 200px [row2-end];
     background-color: #fff;
     color: #444;
 }
+
 .a {
     grid-column: col1-start / col3-start;
-    grid-row: row1-start ;
-  }
-  .b {
+    grid-row: row1-start;
+}
+
+.b {
     grid-column: col1-start / col3-start;
-    grid-row: row2-start ;
-  }
-  .c {
-    grid-column: col3-start ;
+    grid-row: row2-start;
+}
+
+.c {
+    grid-column: col3-start;
     grid-row: row1-start / row2-end;
-  }
+}
