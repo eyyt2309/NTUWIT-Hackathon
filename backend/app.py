@@ -34,7 +34,7 @@ def authenticate():
     except Exception as e:
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
     
-@app.route('/projectinfo', methods=['GET'])
+@app.route('/projectinfo', methods=['POST'])
 def getprojinfo():
     try:
         data = request.get_json()
@@ -64,7 +64,7 @@ def getprojinfo():
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
     
 
-@app.route('/getRecentProjects', methods=['GET'])
+@app.route('/getRecentProjects', methods=['POST'])
 def getinfo():
     try:
         data = request.get_json()
