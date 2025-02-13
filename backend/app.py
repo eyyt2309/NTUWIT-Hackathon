@@ -55,10 +55,12 @@ def getprojinfo():
         if data:  # `auth == True` is redundant, just use `if auth`
             return project_dict, 200
         else:
-            return jsonify({'failed': 'Invalid credentials'}), 401
+            return jsonify({'NIL': 'no data found'}), 401
 
     except Exception as e:
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
+    
+
 @app.route('/getRecentProjects', methods=['GET'])
 def getinfo():
     try:
@@ -67,14 +69,21 @@ def getinfo():
 
         if not userId:
             return jsonify({'error': 'Missing userid'}), 400
-        data = controller.dashboardController.retrieveInfo(userId)
+        data = controller.projectController.retrieveSubmittedProject(userId)
+        print(data)
+        project_dict = {}
+        i=1
+        for proj in data:
+            print("in for loop")
+            project_dict["projectId"+str(i)] = proj[0]
+            project_dict["currentCode"+str(i)] = proj[1]
+            project_dict["percentage"+str(i)] = proj[2]
+            i+=1
 
-        # Fetch stored hash from MySQL
-        auth = controller.dashboardController.authenticate_user(userid)
-        if auth:  # `auth == True` is redundant, just use `if auth`
-            return jsonify({'success': 'Authentication successful'}), 200
+        if data:  # `auth == True` is redundant, just use `if auth`
+            return project_dict, 200
         else:
-            return jsonify({'failed': 'Invalid credentials'}), 401
+            return jsonify({'NIL': 'No data found'}), 401
 
     except Exception as e:
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500

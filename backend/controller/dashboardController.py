@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
-from controller.projectController import d
+import controller.projectController
 def retrieveInfo(userId):
     try:
         connection = mysql.connector.connect(

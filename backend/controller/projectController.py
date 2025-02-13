@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
+
+
 def retrieveprojectInfo(projectId):
     try:
         connection = mysql.connector.connect(
