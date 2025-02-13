@@ -1,0 +1,138 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build files
+dist/
+build/
+.next/
+out/
+.cache/
+.vite/
+coverage/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+.stackdump
+.dockerignore
+
+# MySQL database-related files
+*.sql
+*.sql.gz
+*.db
+*.sqlite
+*.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# React-specific
+.eslintcache
+public/
+.cache/
+*.lock
+
+# CSS Preprocessors (if applicable)
+*.sass-cache
+*.scss-cache
+*.css.map
+*.sass.map
+
+# Git local settings
+.gitconfig
+.gitignore
+
+# ==========================
+# Python-Specific Ignores
+# ==========================
+
+# Virtual Environment (venv)
+venv/
+env/
+.venv/
+.conda/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python Package & Build
+build/
+dist/
+*.egg
+*.egg-info/
+.installed.cfg
+MANIFEST
+
+# Cache & Temp files
+*.cache
+*.pytest_cache/
+.tox/
+.coverage
+nosetests.xml
+coverage.xml
+*.mo
+*.pot
+
+# Hugging Face Model Files
+huggingface/
+*.bin
+*.pt
+*.onnx
+*.safetensors
+*.json
+tokenizer_config.json
+pytorch_model.bin
+config.json
+
+# Temporary & Large files
+*.csv
+*.tsv
+*.pkl
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+*.tflite
+*.tar.gz
+*.zip
+*.tar
+*.gz
+
+**/.ipynb_checkpoints
+**/.jupyter/
+**/outputs/
+
+aipart/__pycache__/
+venv/
+*.deb
