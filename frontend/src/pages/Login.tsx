@@ -1,6 +1,5 @@
 import "../css/Login.css";
 import { useState } from "react";
-import
 
 function Login() {
   // State for input fields
