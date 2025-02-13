@@ -14,14 +14,15 @@ def authenticate_user(email,userPassword):
         if connection.is_connected():
             print("connection works")
             cursor = connection.cursor()
-            query = "SELECT password_hash FROM Users WHERE email = %s"
+            query = "SELECT userId,password_hash FROM Users WHERE email = %s"
             cursor.execute(query, (email,))
             result = cursor.fetchone()
+            print(result)
             cursor.close()
             connection.close()
 
-            if result[0] == userPassword:
-                return True
+            if result[1] == userPassword:
+                return result[0]
             else:
                 return False
     except Error as e:
