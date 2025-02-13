@@ -10,7 +10,7 @@ Team Hardcoders
 | Lim En Jia | [@enjiaaaa](https://github.com/enjiaaaa) |
 | Lee Jia Rong | [@CLJRR](https://github.com/CLJRR) |
 | Ethan Yew | [@eyyt2309](https://github.com/eyyt2309) |
-| Harikrishnan Vinod | [@harikrishnanvinod] (https://github.com/harikrishnan-vinod) |
+| Harikrishnan Vinod | [@harikrishnanvinod](https://github.com/harikrishnan-vinod) |
 | Raja Muthu | [@mu7hu](https://github.com/mu7hu) |
 
 
