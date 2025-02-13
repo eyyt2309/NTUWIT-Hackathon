@@ -8,8 +8,6 @@ function CommunityUpload() {
   const [formData, setFormData] = useState({
     title: "",
     problemStatement: "",
-    constraints: "",
-    timeLimit: "",
     sampleInput: "",
     sampleOutput: "",
     explanation: "",
@@ -53,31 +51,34 @@ function CommunityUpload() {
         <div className="form-container">
           <form>
             <div className="form-group">
-              <label>Input Title:</label>
-              <input type="text" />
+              <label>Title:</label>
+              <input type="text" placeholder="Enter Title:" />
             </div>
 
             <div className="form-group">
-              <label>Input Problem Statement:</label>
-              <input type="text" />
+              <label>Problem Statement:</label>
+              <input
+                type="text"
+                name="problemStatement"
+                className="form-group large-input"
+                value={formData.problemStatement}
+                onChange={handleChange}
+                placeholder="Enter Problem Statement"
+              />
             </div>
 
             <div className="form-group">
-              <label>Constraints:</label>
-              <input type="text" />
+              <label>Description:</label>
+              <input
+                type="text"
+                name="explanation"
+                className="form-group large-input"
+                value={formData.explanation}
+                onChange={handleChange}
+                placeholder="Enter Description"
+              />
             </div>
 
-            <div className="form-group">
-              <label>Time Limit:</label>
-              <input type="text" />
-            </div>
-
-            <div className="form-group">
-              <label>Explanation:</label>
-              <input type="text" />
-            </div>
-
-            {/* Toggle Switch */}
             <div className="form-group toggle-group">
               <label>Set As Private</label>
               <div
@@ -97,17 +98,6 @@ function CommunityUpload() {
       <div className="codeEditor-container">
         <CodeEditor />
       </div>
-
-      <div className="testing-container">
-
-        <div className="testing">
-          <label>Sample Input:</label>
-          <input type="text" />
-        </div>
-
-        <div className="output-box"> Sample Output:</div>
-      </div>
-
     </>
   );
 }
