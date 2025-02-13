@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 20%;
+  width: 12%;
   height: 100vh;
   background: linear-gradient(180deg, #000000, #3d3545);
   display: flex;
@@ -10,7 +10,6 @@
   padding: 30px;
   margin: 0;
   box-sizing: border-box;
-
 }
 
 .menu-icon {

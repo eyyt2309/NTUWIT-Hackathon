@@ -27,7 +27,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate replace to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/courses" element={<Courses />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/community-upload" element={<CommunityUpload />} />
