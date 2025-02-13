@@ -56,7 +56,7 @@ function Sidebar() {
           <span>Settings</span>
         </Link>
 
-        <Link to="/" className="sidebar-link">
+        <Link to="/login" className="sidebar-link">
           <i className="lni lni-exit"></i>
           <span>Logout</span>
         </Link>
