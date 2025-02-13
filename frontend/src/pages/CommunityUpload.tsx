@@ -5,48 +5,6 @@ import CodeEditor from "../components/CodeEditor";
 function CommunityUpload() {
   const [isPrivate, setIsPrivate] = useState(false);
 
-  const [formData, setFormData] = useState({
-    title: "",
-    problemStatement: "",
-    constraints: "",
-    timeLimit: "",
-    sampleInput: "",
-    sampleOutput: "",
-    explanation: "",
-    code: "",
-    isPrivate: false,
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleCodeChange = (newCode: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      code: newCode,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/upload",
-        formData
-      );
-      console.log("Upload successful:", response.data);
-      alert("Problem uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading:", error);
-      alert("Error uploading the problem!");
-    }
-  };
-
   return (
     <>
       <div className="upload-container">
@@ -73,16 +31,6 @@ function CommunityUpload() {
             </div>
 
             <div className="form-group">
-              <label>Sample Input:</label>
-              <input type="text" />
-            </div>
-
-            <div className="form-group">
-              <label>Sample Output:</label>
-              <input type="text" />
-            </div>
-
-            <div className="form-group">
               <label>Explanation:</label>
               <input type="text" />
             </div>
@@ -102,8 +50,18 @@ function CommunityUpload() {
           </form>
         </div>
       </div>
+
       <div className="codeEditor-container">
         <CodeEditor />
+      </div>
+
+      <div className="testing-container">
+        <div className="testing">
+          <label>Sample Input:</label>
+          <input type="text" />
+        </div>
+
+        <div className="output-box"> Sample Output:</div>
       </div>
     </>
   );
