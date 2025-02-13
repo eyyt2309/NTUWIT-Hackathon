@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "../css/CommunityUpload.css";
 import CodeEditor from "../components/CodeEditor";
-
+import Sidebar from "../components/Sidebar";
+import Searchbar from "../components/Searchbar";
 
 function CommunityUpload() {
   const [isPrivate, setIsPrivate] = useState(false);
@@ -47,6 +48,8 @@ function CommunityUpload() {
   };
   return (
     <>
+      <Sidebar />
+      <Searchbar />
       <div className="upload-container">
         <div className="form-container">
           <form>
