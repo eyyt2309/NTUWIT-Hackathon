@@ -28,3 +28,6 @@ CREATE TABLE SubmittedProjects (
     FOREIGN KEY (userId) REFERENCES Users(userId) ON DELETE CASCADE
 );
 -- @block
+CREATE USER 'ntu_user'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'ntu_user'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
