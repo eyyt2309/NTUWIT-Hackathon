@@ -1,0 +1,8 @@
+torch
+transformers
+accelerate
+tqdm
+bandit
+semgrep
+requests
+flask
