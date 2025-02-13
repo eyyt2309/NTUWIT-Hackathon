@@ -1,10 +1,16 @@
-import { useState } from "react";
 import "../css/CommunityUpload.css";
 import CodeEditor from "../components/CodeEditor";
 import Sidebar from "../components/Sidebar";
 import Searchbar from "../components/Searchbar";
+import { useEffect, useState } from "react";
 
 function CommunityUpload() {
+  const [userId, setUserId] = useState<string | null>(null);
+
+    useEffect(() => {
+      setUserId(sessionStorage.getItem("userId"));
+    }, []); // Added missing dependency array
+    console.log(userId);
   const [isPrivate, setIsPrivate] = useState(false);
 
   const [formData, setFormData] = useState({
