@@ -31,7 +31,7 @@ function SearchBar() {
         <p>{subtitle}</p>
       </div>
 
-      {/* <div className="search-box">
+      <div className="search-box">
         <FaSearch className="search-icon" />
         <input type="text" placeholder="Search" />
       </div>
@@ -40,7 +40,7 @@ function SearchBar() {
         <span className="status-indicator"></span>
         <img src="/profile.jpg" alt="User" className="profile-pic" />
         <span className="dropdown-icon">▼</span>
-      </div> */}
+      </div>
     </div>
   );
 }
