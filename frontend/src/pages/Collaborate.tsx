@@ -1,30 +1,33 @@
+import "../css/Collaborate.css";
+
 function Collaborate() {
   const groups = [
     {
-      title: "SC3000 SCSB",
-      description: "Learning the Foundations of Machine Learning"
-    }
+      title: "SC3000 TG20",
+      status: "Current",
+    },
     {
-      title: "SC3010 SCSB",
-      description: "Importance of Security"
-    }
-  ]
-  return <div className="project-team">
-    <h1>Groups</h1>
-    <button className="joinGroup">Join Group</button>
-    <div className="projects-grid">
-      {groups.map((group, index) => (
-        <div key={index} className={`project-card ${project.status}`}>
-          <h3>{project.title}</h3>
-          <p>{project.tech}</p>
-          <span className={`status ${project.status}`}>{project.status}</span>
-        </div>
-      ))}
-    </div>
+      title: "SC3010 TG01",
+      status: "Past",
+    },
+  ];
 
-    <div className="team-container">
-
+  return (
+    <div className="collaborate-page">
+      <div className="header-container">
+        <header>Groups</header>
+        <button className="join-group-btn">Join Group</button>
+      </div>
+      <div className="groups-grid">
+        {groups.map((group, index) => (
+          <div key={index} className={`group-card ${group.status}`}>
+            <h3>{group.title}</h3>
+            <span className={`status ${group.status}`}>{group.status}</span>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 }
+
 export default Collaborate;

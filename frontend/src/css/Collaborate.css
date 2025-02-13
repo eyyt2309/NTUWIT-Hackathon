@@ -1,0 +1,95 @@
+.collaborate-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #f7f7f7, #e8e8f5);
+    padding-bottom: 50px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 100%;
+    width: 55%;
+    margin-bottom: 10px;
+    margin-top: -70px;
+
+}
+
+header {
+    font-size: 50px;
+    margin: 0;
+}
+
+.join-group-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 16px;
+    padding: 1px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.join-group-btn:hover {
+    background-color: green;
+    color: white;
+}
+
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+    padding-left: 310px;
+}
+
+.group-card {
+    font-size: 15px;
+    padding-left: 10px;
+    margin: 10px 10px 30px 10px;
+    width: 200px;
+    height: 100px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-wrap: wrap;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.group-card.Current {
+    background-color: rgb(255, 211, 255);
+}
+
+.group-card.Past {
+    background-color: rgb(121, 51, 121);
+}
+
+.status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status.Current,
+.status.Past {
+    background-color: #f7f7f7;
+}
+
+
+.group-card:hover {
+    transform: scale(1.05);
+    color: rgb(0, 0, 0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgb(0, 184, 92);
+}
