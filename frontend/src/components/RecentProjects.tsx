@@ -4,9 +4,13 @@ import image2 from "../assets/istockphoto-1220974008-612x612.jpg";
 import { useEffect, useState } from "react";
 
 function RecentProjects() {
-  const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [title, setTitle] = useState("");
+  const [languages, setLanguages] = useState("");
+  const [percentage, setPercentage] = useState("");
+  const [projectid, setProjectid] = useState(null);
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -15,7 +19,6 @@ function RecentProjects() {
           throw new Error("Failed to fetch projects");
         }
         const data = await response.json();
-        setProjects(data); // Assuming API returns an array of projects
       } catch (error) {
         setError(
           error instanceof Error ? error.message : "Unknown error occurred"
@@ -39,8 +42,10 @@ function RecentProjects() {
             src={image1}
             alt="Stock picture of course"
           ></img>
-          <h1 className="project-title">Web Dev Project</h1>
-          <h1 className="project-subscript">HTML CSS</h1>
+          <h1 className="project-title">{title}</h1>
+          <h1 className="project-subscript">
+            {languages} <p className="percentage-point">{percentage}%</p>
+          </h1>
         </button>
         <button className="recentprojects-button">
           <img
@@ -48,8 +53,10 @@ function RecentProjects() {
             src={image2}
             alt="Stock picture of course"
           ></img>
-          <h1 className="project-title">Database Project</h1>
-          <h1 className="project-subscript">SQL Java</h1>
+          <h1 className="project-title">{title}</h1>
+          <h1 className="project-subscript">
+            {languages} <p className="percentage-point">{percentage}%</p>
+          </h1>
         </button>
       </div>
     </div>
