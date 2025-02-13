@@ -5,12 +5,11 @@ import { useLocation } from "react-router-dom";
 function SearchBar() {
   const location = useLocation(); // Get current URL path
 
-  // Define titles & subtitles for each page
   const pageDetails: Record<string, { title: string; subtitle: string }> = {
     "/dashboard": { title: "Dashboard", subtitle: "Overview of your account" },
     "/projects": {
       title: "Projects For You!",
-      subtitle: "Here is your project Dashboard",
+      subtitle: "Start Working on Projects Now",
     },
     "/community-upload": {
       title: "Community Upload",
@@ -20,14 +19,14 @@ function SearchBar() {
     "/settings": { title: "Settings", subtitle: "Customize your experience" },
   };
 
-  // Default title if the route is not explicitly listed
   const { title, subtitle } = pageDetails[location.pathname] || {
     title: "Welcome",
     subtitle: "Explore our platform",
   };
+
   return (
-    <div className="search-container">
-      <div className="search-title">
+    <div className="heading-container">
+      <div className="heading-title">
         <h1>{title}</h1>
         <p>{subtitle}</p>
       </div>
