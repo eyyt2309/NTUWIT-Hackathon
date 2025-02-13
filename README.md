@@ -29,10 +29,10 @@ pip install
 
 ### AI Portion
 #### In Main Folder 
-** #### Make a virtual environment first**
+**Make a virtual environment first**
 python -m venv venv 
-** Activate virtual environment**
+**Activate virtual environment**
 **For Windows**:.\venv\Scripts\activate
 **For Mac**:source venv/bin/activate
-** Install files**
+**Install files**
 pip install -r aipart/requirements.txt
