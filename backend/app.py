@@ -3,9 +3,11 @@ import redis
 import controller.projectController
 import controller.userController
 import controller.dashboardController
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Connect to Redis (Assuming no password; add `password='your_redis_password'` if needed)
 # redis_cache = redis.Redis(host='localhost', port=6379, decode_responses=True)
