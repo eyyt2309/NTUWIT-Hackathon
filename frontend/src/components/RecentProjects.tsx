@@ -4,32 +4,32 @@ import image2 from "../assets/istockphoto-1220974008-612x612.jpg";
 import { useEffect, useState } from "react";
 
 function RecentProjects() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [title, setTitle] = useState("");
-  const [languages, setLanguages] = useState("");
-  const [percentage, setPercentage] = useState("");
-  const [projectid, setProjectid] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
+  // const [title, setTitle] = useState("");
+  // const [languages, setLanguages] = useState("");
+  // const [percentage, setPercentage] = useState("");
+  // const [projectid, setProjectid] = useState(null);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("https://api.example.com/projects"); // Replace with actual API
-        if (!response.ok) {
-          throw new Error("Failed to fetch projects");
-        }
-        const data = await response.json();
-      } catch (error) {
-        setError(
-          error instanceof Error ? error.message : "Unknown error occurred"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response = await fetch("https://api.example.com/projects"); // Replace with actual API
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch projects");
+  //       }
+  //       const data = await response.json();
+  //     } catch (error) {
+  //       setError(
+  //         error instanceof Error ? error.message : "Unknown error occurred"
+  //       );
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchProjects();
-  }, []);
+  //   fetchProjects();
+  // }, []);
   return (
     <div className="recentprojects-container">
       <div className="recentprojects-header">
