@@ -14,6 +14,20 @@
             "database": "ntuwit",
             "username": "ntu_user",
             "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "mysql-d178ad0-ntuwit.h.aivencloud.com",
+            "port": 23680,
+            "driver": "MySQL",
+            "database": "defaultdb",
+            "username": "avnadmin",
+            "password": "AVNS_4sby-XOIcfSbT4ToAGs",
+            "name": "ntuwit2"
         }
     ]
 }
