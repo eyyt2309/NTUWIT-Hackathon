@@ -1,6 +1,5 @@
 import "../css/Login.css";
 import { useState } from "react";
-import
 
 function Login() {
   // State for input fields
@@ -10,14 +9,16 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   // Handle form submission
+  const handleSignIn = async (event) => {
+    event.preventDefault(); // Prevent form from reloading the page
+    setLoading(true); // Show loading state
+    setError(null); // Reset previous error
 
-  const handleSignIn = async () => {
     try {
       const lowerCaseEmail = email.toLowerCase();
       console.log("Email:", lowerCaseEmail);
-      const url = `http://127.0.0.1:5000/auth`;
 
-      const response = await fetch(url, {
+      const response = await fetch("http://127.0.0.1:5000/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,38 +28,26 @@ function Login() {
           password: password,
         }),
       });
-      // const response = await fetch('http://172.20.10.7:8080/clinic/sort', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     chas,
-      //     isp,
-      //     cdmp,
-      //     distance,
-      //     postalcode: postalCode,
-      //     byWaitingTime
-      //   }),
-      // });
 
       console.log("Response status:", response.status); // Log response status
       const result = await response.json(); // Assuming the backend returns JSON
-
+      console.log(response);
       if (response.ok) {
-        console.log("Sign-in successful:", result); // Log successful sign-in response
-        await AsyncStorage.setItem("emailId", email.toLowerCase());
-        setEmail("");
-        setPassword("");
-        navigation.navigate("Home");
+        console.log("Sign-in successful:", result);
+
+        // Store user data in sessionStorage
+        sessionStorage.setItem("emailId", lowerCaseEmail);
+        sessionStorage.setItem("password", password); // ⚠ Storing passwords in sessionStorage is **NOT** secure
+
+        // Redirect to home page
+        window.location.href = "/dashboard"; // Use react-router navigate if applicable
       } else {
-        Alert.alert(
-          "Wrong email or password !",
-          result.message || "Please try again"
-        );
+        setError(result.message || "Wrong email or password! Please try again");
       }
     } catch (error) {
-      Alert.alert("Error", "Failed to sign in");
+      setError("Error: Failed to sign in");
+    } finally {
+      setLoading(false); // Hide loading state
     }
   };
 
@@ -75,6 +64,7 @@ function Login() {
           className="email-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
@@ -82,6 +72,7 @@ function Login() {
           className="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <button className="submit-button" type="submit" disabled={loading}>
