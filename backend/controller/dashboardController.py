@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
-
-def authenticate_user(email,userPassword):
+import controller.projectController
+def retrieveInfo(userId):
     try:
         connection = mysql.connector.connect(
             host='REMOVED',
@@ -14,14 +14,15 @@ def authenticate_user(email,userPassword):
         if connection.is_connected():
             print("connection works")
             cursor = connection.cursor()
-            query = "SELECT password_hash FROM Users WHERE email = %s"
-            cursor.execute(query, (email,))
-            result = cursor.fetchone()
+            query = "SELECT projectid FROM SubmittedProjects WHERE userId = %s"
+            cursor.execute(query, (userId,))
+            results = cursor.fetchall()
             cursor.close()
             connection.close()
-
-            if result[0] == userPassword:
-                return True
+            
+            if result:
+                for projectId in results:
+                    controller.projectController.retrieveprojectInfo(projectId)
             else:
                 return False
     except Error as e:

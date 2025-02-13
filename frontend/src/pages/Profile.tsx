@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../css/Profile.css";
+import Sidebar from "../components/Sidebar";
+import Searchbar from "../components/Searchbar";
 
 function Profile() {
   const [skills, setSkills] = useState([
@@ -20,34 +22,38 @@ function Profile() {
   };
 
   return (
-    <div className="profile-page">
-      <div className="profile-content">
-        <div className="skill-section">
-          <h2>Set Skill Levels:</h2>
-          <ul>
-            {skills.map((skill, index) => (
-              <li key={index} className="skill-item">
-                <span>{skill.name}</span>
-                <select
-                  value={skill.level}
-                  onChange={(e) => handleSkillChange(index, e.target.value)}
-                >
-                  {levels.map((level) => (
-                    <option key={level} value={level}>
-                      {level}
-                    </option>
-                  ))}
-                </select>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="upload-section">
-          <h2>Upload any certifications to be verified</h2>
-          <input type="file" accept=".pdf" />
+    <>
+      <Sidebar />
+      <Searchbar />
+      <div className="profile-page">
+        <div className="profile-content">
+          <div className="skill-section">
+            <h2>Set Skill Levels:</h2>
+            <ul>
+              {skills.map((skill, index) => (
+                <li key={index} className="skill-item">
+                  <span>{skill.name}</span>
+                  <select
+                    value={skill.level}
+                    onChange={(e) => handleSkillChange(index, e.target.value)}
+                  >
+                    {levels.map((level) => (
+                      <option key={level} value={level}>
+                        {level}
+                      </option>
+                    ))}
+                  </select>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="upload-section">
+            <h2>Upload any certifications to be verified</h2>
+            <input type="file" accept=".pdf" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
