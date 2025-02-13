@@ -15,8 +15,7 @@ def communityUpload(userId, title, problem_statement, sample_input, sample_outpu
             print("Connection to MySQL successful!")
 
             cursor = connection.cursor()
-            
-            # SQL Query to Insert New Project
+
             query = """
             INSERT INTO Projects (userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
