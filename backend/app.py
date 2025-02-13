@@ -23,8 +23,9 @@ def authenticate():
 
         # Fetch stored hash from MySQL
         auth = controller.userController.authenticate_user(email, password)
+        print(auth)
         if auth:  # `auth == True` is redundant, just use `if auth`
-            return jsonify({'success': 'Authentication successful'}), 200
+            return jsonify({'userId': auth}), 200
         else:
             return jsonify({'failed': 'Invalid credentials'}), 401
 
