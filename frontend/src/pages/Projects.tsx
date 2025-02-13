@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import "../css/Projects.css";
 import "../css/standard.css";
-
+import Sidebar from "../components/Sidebar";
+import Searchbar from "../components/Searchbar";
 
 function Projects() {
   useEffect(() => {
@@ -30,17 +31,23 @@ function Projects() {
   ];
 
   return (
-    <div className="project-page">
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={index} className={`project-card ${project.status}`}>
-            <h3>{project.title}</h3>
-            <p>{project.tech}</p>
-            <span className={`status ${project.status}`}>{project.status}</span>
-          </div>
-        ))}
+    <>
+      <Sidebar />
+      <Searchbar />
+      <div className="project-page">
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <div key={index} className={`project-card ${project.status}`}>
+              <h3>{project.title}</h3>
+              <p>{project.tech}</p>
+              <span className={`status ${project.status}`}>
+                {project.status}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
