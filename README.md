@@ -5,8 +5,8 @@ Nanyang Technological Unviersity \
 Team Hardcoders 
 
 ##Our Team
-|---|---|
 | Name| Github ID |
+|---|---|
 | Lim En Jia | [@enjiaaaa](https://github.com/enjiaaaa) |
 | Lee Jia Rong | [@CLJRR](https://github.com/CLJRR) |
 | Ethan Yew | [@eyyt2309](https://github.com/eyyt2309) |
