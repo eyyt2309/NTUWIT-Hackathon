@@ -17,7 +17,7 @@ function Login() {
     try {
       const lowerCaseEmail = email.toLowerCase();
       console.log("Email:", lowerCaseEmail);
-
+      console.log("Password:", password);
       const response = await fetch("http://127.0.0.1:5000/auth", {
         method: "POST",
         headers: {
