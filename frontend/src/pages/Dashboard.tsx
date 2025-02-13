@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 function Dashboard() {
   return (
     <div className="dashboard_container">
-      <RecentProjects />
       <ProjectHUD />
+      <RecentProjects />
     </div>
   );
 }
