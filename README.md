@@ -2,7 +2,7 @@
 
 >Women-In_Tech Hackathon \
 Nanyang Technological Unviersity \
-Team Hardcoders \
+Team Hardcoders 
 
 ##Our Team
 | Name| Github ID |
