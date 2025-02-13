@@ -1,5 +1,6 @@
 import "../css/Login.css";
 import { useState } from "react";
+import
 
 function Login() {
   // State for input fields
@@ -67,7 +68,7 @@ function Login() {
 
       {error && <p className="error-message">{error}</p>}
 
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleSignIn}>
         <input
           type="email"
           placeholder="Enter email"
