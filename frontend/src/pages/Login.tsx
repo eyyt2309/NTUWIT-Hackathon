@@ -9,7 +9,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   // Handle form submission
-  const handleSignIn = async (event) => {
+  const handleSignIn = async (event: { preventDefault: () => void }) => {
     event.preventDefault(); // Prevent form from reloading the page
     setLoading(true); // Show loading state
     setError(null); // Reset previous error
@@ -37,8 +37,8 @@ function Login() {
 
         // Store user data in sessionStorage
         sessionStorage.setItem("emailId", lowerCaseEmail);
-        sessionStorage.setItem("password", password); // ⚠ Storing passwords in sessionStorage is **NOT** secure
-
+        // sessionStorage.setItem("password", password); // ⚠ Storing passwords in sessionStorage is **NOT** secure
+        sessionStorage.setItem("userId", result.userId);
         // Redirect to home page
         window.location.href = "/dashboard"; // Use react-router navigate if applicable
       } else {
