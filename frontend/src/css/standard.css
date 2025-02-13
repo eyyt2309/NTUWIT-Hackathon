@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.title {
+    font-size: 2.5rem;
+    /* Reasonable size */
+    font-weight: 600;
+    text-align: center;
+    /* Adjust as needed */
+    margin-bottom: 20px;
+}
+
+
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+a.sidebar-link {
+    padding: 15px 0.1px;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #ff00fb;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    outline: black;
+    outline-width: 1px;
+    justify-content: flex-end;
+
+}
+
+
+.search input[type="text"] {
+    padding: 6px;
+    margin-right: 10px;
+    border: none;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+.search button {
+    padding: 6px 10px;
+    background: white;
+    color: green;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search button i {
+    font-size: 18px;
+}
