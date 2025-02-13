@@ -8,7 +8,6 @@ import {
 import Sidebar from "./components/Sidebar";
 import Searchbar from "./components/Searchbar";
 
-import Courses from "./pages/Courses";
 import Projects from "./pages/Projects";
 import Profile from "./pages/Profile";
 import CommunityUpload from "./pages/CommunityUpload";
