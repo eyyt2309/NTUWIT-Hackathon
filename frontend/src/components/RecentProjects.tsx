@@ -68,28 +68,10 @@ function RecentProjects() {
     const storedUserId = sessionStorage.getItem("userId");
     setUserId(storedUserId);
 
-<<<<<<< HEAD
     if (storedUserId) {
       fetchProjects(storedUserId);
     }
   }, []);
-=======
-          const response = await fetch("http://127.0.0.1:5000/projectinfo", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              projectid: projectid1,
-            }),
-          });
-        }
-      } catch (error) {
-        setError("Error: Failed to fetch projects");
-      }
-    };
-  });
->>>>>>> 99385ac22a5f845dde2f590153146ec86a434cdd
   return (
     <div className="recentprojects-container">
       <div className="recentprojects-header">
