@@ -10,7 +10,6 @@ function Sidebar() {
           alt="whiteLogo"
           className="menu-icon"
         />
-
       </button>
       <div className="sidebar-logo">
         <Link to="/">! Hard Coders</Link>
@@ -22,12 +21,6 @@ function Sidebar() {
           <Link to="/dashboard" className="sidebar-link">
             <i className="lni lni-dashboard-square-1"></i>
             <span>DashBoard</span>
-          </Link>
-        </li>
-        <li className="sidebar-item">
-          <Link to="/courses" className="sidebar-link">
-            <i className="lni lni-pen-to-square"></i>
-            <span>Courses</span>
           </Link>
         </li>
         <li className="sidebar-item">

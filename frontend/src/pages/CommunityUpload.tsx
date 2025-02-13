@@ -5,6 +5,9 @@ import CodeEditor from "../components/CodeEditor";
 function CommunityUpload() {
   const [isPrivate, setIsPrivate] = useState(false);
 
+function CommunityUpload() {
+  const [isPrivate, setIsPrivate] = useState(false);
+
   const [formData, setFormData] = useState({
     title: "",
     problemStatement: "",
@@ -44,7 +47,6 @@ function CommunityUpload() {
       alert("Error uploading the problem!");
     }
   };
-
   return (
     <>
       <div className="upload-container">
@@ -93,7 +95,6 @@ function CommunityUpload() {
           </form>
         </div>
       </div>
-
 
       <div className="codeEditor-container">
         <CodeEditor />

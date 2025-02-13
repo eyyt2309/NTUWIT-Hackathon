@@ -1,3 +1,33 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "ntuwit",
+            "database": "ntuwit",
+            "username": "ntu_user",
+            "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "REMOVED",
+            "port": 23680,
+            "driver": "MySQL",
+            "database": "REMOVED",
+            "username": "REMOVED",
+            "password": "REMOVED",
+            "name": "ntuwit2"
+        }
+    ]
 }
