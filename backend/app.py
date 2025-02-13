@@ -79,8 +79,8 @@ def getinfo():
         for proj in data:
             print("in for loop")
             project_dict["projectId"+str(i)] = proj[0]
-            project_dict["currentCode"+str(i)] = proj[1]
-            project_dict["percentage"+str(i)] = proj[2]
+            project_dict["percentage"+str(i)] = proj[3]
+            project_dict["currentCode"+str(i)] = proj[2]
             i+=1
 
         if data:  # `auth == True` is redundant, just use `if auth`
