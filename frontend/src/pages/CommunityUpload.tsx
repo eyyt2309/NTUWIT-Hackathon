@@ -81,6 +81,12 @@ function CommunityUpload() {
                 placeholder="Enter Description"
               />
             </div>
+            <div className="form-group">
+              <label>Languages:</label>
+              <input type="text" placeholder="Enter Languages Used:" />
+            </div>
+
+
 
             <div className="form-group toggle-group">
               <label>Set As Private</label>
