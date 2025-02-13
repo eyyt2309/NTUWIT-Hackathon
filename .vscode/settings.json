@@ -12,8 +12,8 @@
             "driver": "MySQL",
             "name": "ntuwit",
             "database": "ntuwit",
-            "username": "root",
-            "password": "Iehechohwu1!"
+            "username": "ntu_user",
+            "password": ""
         }
     ]
 }
