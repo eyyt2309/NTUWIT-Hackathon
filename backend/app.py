@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import controller.communityuploadController
 import redis
 import controller.projectController
 import controller.userController
@@ -134,7 +135,7 @@ def upload_project():
         if not userId or not title or not problem_statement:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        result = controller.projectController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
 
         if result:
             return jsonify({'message': 'Project uploaded successfully'}), 201
