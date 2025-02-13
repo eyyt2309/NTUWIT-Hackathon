@@ -20,7 +20,7 @@ def retrieveInfo(userId):
             cursor.close()
             connection.close()
             
-            if result:
+            if results:
                 for projectId in results:
                     controller.projectController.retrieveprojectInfo(projectId)
             else:
