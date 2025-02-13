@@ -9,13 +9,12 @@ function CodeEditor() {
 
   return (
     <div className="code-container">
-      <label className="code-label">Input Model Answer:</label>
+      <label className="code-label">Input Answer:</label>
       <div className="editor-wrapper">
         <CodeMirror
           value={code}
-          extensions={[javascript()]} // Corrected extensions import
-          theme={vscodeDark} // Added a theme for better visibility
-          height="300px"
+          extensions={[javascript()]}
+          theme={vscodeDark}
           onChange={(value) => setCode(value)}
         />
       </div>
