@@ -73,16 +73,6 @@ function CommunityUpload() {
             </div>
 
             <div className="form-group">
-              <label>Sample Input:</label>
-              <input type="text" />
-            </div>
-
-            <div className="form-group">
-              <label>Sample Output:</label>
-              <input type="text" />
-            </div>
-
-            <div className="form-group">
               <label>Explanation:</label>
               <input type="text" />
             </div>
@@ -102,9 +92,22 @@ function CommunityUpload() {
           </form>
         </div>
       </div>
+
+
       <div className="codeEditor-container">
         <CodeEditor />
       </div>
+
+      <div className="testing-container">
+
+        <div className="testing">
+          <label>Sample Input:</label>
+          <input type="text" />
+        </div>
+
+        <div className="output-box"> Sample Output:</div>
+      </div>
+
     </>
   );
 }
