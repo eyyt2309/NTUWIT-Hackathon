@@ -1,14 +1,9 @@
-import "./css/standard.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import Searchbar from "./components/Searchbar";
-
-import Projects from "./pages/Projects";
+import Courses from "./pages/Courses";
+import ProjectsBase from "./pages/ProjectsBase";
+import ProjectsCommunity from "./pages/ProjectsCommunity";
 import Profile from "./pages/Profile";
 import CommunityUpload from "./pages/CommunityUpload";
 import Collaborate from "./pages/Collaborate";
@@ -21,12 +16,15 @@ function App() {
       <Router>
         <div className="d-flex">
           <Sidebar />
-          <Searchbar />
           <div className="container-fluid p-4">
             <Routes>
-              <Route path="/" element={<Navigate replace to="/dashboard" />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/projects" element={<Projects />} />
+              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/projects/base" element={<ProjectsBase />} />
+              <Route
+                path="/projects/community"
+                element={<ProjectsCommunity />}
+              />
               <Route path="/profile" element={<Profile />} />
               <Route path="/community-upload" element={<CommunityUpload />} />
               <Route path="/collaborate" element={<Collaborate />} />
