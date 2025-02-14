@@ -2,6 +2,7 @@ import "../css/RecentProjects.css";
 import image1 from "../assets/istockphoto-1047259374-612x612.jpg";
 import image2 from "../assets/istockphoto-1220974008-612x612.jpg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function RecentProjects() {
   const [loading, setLoading] = useState(true);
@@ -29,12 +30,13 @@ function RecentProjects() {
 
       if (response.ok) {
         console.log("Fetch projects successful");
-        setProjectid(result.projectid1);
+        const fetchedProjectId = result.projectId1;
+        setProjectid(result.projectId1);
         setPercentage(result.percentage1);
 
         // Fetch project info using the new projectId
         if (result.projectid1) {
-          fetchProjectInfo(result.projectid1);
+          fetchProjectInfo(fetchedProjectId);
         }
       }
     } catch (error) {
@@ -79,26 +81,34 @@ function RecentProjects() {
       </div>
       <div className="button-container">
         <button className="recentprojects-button">
-          <img
-            className="image-button"
-            src={image1}
-            alt="Stock picture of course"
-          ></img>
-          <h1 className="project-title">{}</h1>
-          <h1 className="project-subscript">
-            {} <p className="percentage-point">{}%</p>
-          </h1>
+          {projectId && (
+            <Link to="/code" state={{ projectId }} className="code-link">
+              <img
+                className="image-button"
+                src={image1}
+                alt="Stock picture of course"
+              ></img>
+              <h1 className="project-title">{}</h1>
+              <h1 className="project-subscript">
+                {} <p className="percentage-point">{percentage}%</p>
+              </h1>
+            </Link>
+          )}
         </button>
         <button className="recentprojects-button">
-          <img
-            className="image-button"
-            src={image2}
-            alt="Stock picture of course"
-          ></img>
-          <h1 className="project-title">{}</h1>
-          <h1 className="project-subscript">
-            {} <p className="percentage-point">{}%</p>
-          </h1>
+          {projectId && (
+            <Link to="/code" state={{ projectId }} className="code-link">
+              <img
+                className="image-button"
+                src={image2}
+                alt="Stock picture of course"
+              ></img>
+              <h1 className="project-title">{}</h1>
+              <h1 className="project-subscript">
+                {} <p className="percentage-point">{percentage}%</p>
+              </h1>
+            </Link>
+          )}
         </button>
       </div>
     </div>
