@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 
-def communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name):
+def communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name, Project_Description):
     try:
         connection = mysql.connector.connect(
             host='mysql-d178ad0-ntuwit.h.aivencloud.com',
@@ -17,11 +17,11 @@ def communityUpload(userId, title, problem_statement, sample_input, sample_outpu
             cursor = connection.cursor()
 
             query = """
-            INSERT INTO Projects (userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name) 
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO Projects (userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name, Project_Description) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             
-            values = (userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+            values = (userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name, Project_Description)
 
             cursor.execute(query, values)
             connection.commit()  # Save changes

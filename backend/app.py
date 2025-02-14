@@ -53,7 +53,8 @@ def getprojinfo():
             "sample_output": result[5],
             "further_details": result[6],
             "model_answer": result[7],
-            "LANG_NAME": result[8]
+            "LANG_NAME": result[8],
+            "Project_Description": result[9]
         }
         print(project_dict)
         if data:  # `auth == True` is redundant, just use `if auth`
@@ -131,6 +132,7 @@ def upload_project():
         further_details = data.get('further_details')
         model_answer = data.get('model_answer')
         lang_name = data.get('lang_name')
+        Project_Description = data.get('Project_Description')
 
         if not userId or not title or not problem_statement:
             return jsonify({'error': 'Missing required fields'}), 400
