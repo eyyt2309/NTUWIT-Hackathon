@@ -4,7 +4,7 @@ import redis
 import controller.projectController
 import controller.userController
 import controller.dashboardController
-import aipart.ai
+import controller.ai
 from flask_cors import CORS
 
 
@@ -146,7 +146,7 @@ def ai_suggestions():
             return jsonify({"error": "Missing 'code' field in request body"}), 400
 
         # ✅ Call the function from ai.py
-        suggestion = aipart.ai.get_ai_suggestions(code_snippet)
+        suggestion = backend.controller.ai.get_ai_suggestions(code_snippet)
 
         return jsonify({"suggestion": suggestion}), 200
 

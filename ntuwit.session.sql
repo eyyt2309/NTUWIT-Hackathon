@@ -104,7 +104,7 @@ SET password_hash = 1234
 WHERE userId = 1;
 
 -- @block
-SELECT * FROM Users
+SELECT * FROM Projects
 
 -- @block
 INSERT INTO SubmittedProjects (projectId, userId, project_code, Progress_Column)
