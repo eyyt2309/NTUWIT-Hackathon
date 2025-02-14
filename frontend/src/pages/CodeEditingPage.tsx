@@ -91,9 +91,16 @@ function CodeEditingPage() {
         <CodeEditor projectData={projectData} onCodeChange={setCode} />
 
         <div className="AIcontainer">
-          <h1 className="question-header">AI Assistant</h1>
+          <div className="aiHeader">
+            <h1 className="question-header">Suggestion Box</h1>
+            <p>Let our AI guide you! </p>
+          </div>
           <div className="ai-response-box">
-            {aiSuggestion ? <p>{aiSuggestion}</p> : <p>No AI suggestions yet...</p>}
+            {aiSuggestion ? (
+              <p>{aiSuggestion}</p>
+            ) : (
+              <p>No AI suggestions yet...</p>
+            )}
           </div>
         </div>
       </div>
