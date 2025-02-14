@@ -12,6 +12,7 @@ import Collaborate from "./pages/Collaborate";
 import Settings from "./pages/Settings";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import CodeEditingPage from "./pages/CodeEditingPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/collaborate" element={<Collaborate />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/code" element={<CodeEditingPage />} />
             </Routes>
           </div>
         </div>
