@@ -171,7 +171,7 @@ def upload_project():
         if not userId or not title or not problem_statement:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name,Project_Description)
 
         if result:
             return jsonify({'message': 'Project uploaded successfully'}), 201
