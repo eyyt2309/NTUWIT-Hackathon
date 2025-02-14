@@ -140,7 +140,7 @@ def ai_suggestions():
     """ API Route to send a code snippet to Perplexity AI and return AI feedback. """
     try:
         data = request.get_json()
-        code_snippet = data.get("code")
+        code_snippet = data.get("code_snippet")
 
         if not code_snippet:
             return jsonify({"error": "Missing 'code' field in request body"}), 400
@@ -171,7 +171,7 @@ def upload_project():
         if not userId or not title or not problem_statement:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name,Project_Description)
 
         if result:
             return jsonify({'message': 'Project uploaded successfully'}), 201
