@@ -22,7 +22,9 @@ interface ProjectData {
 
 function CodeEditingPage() {
   const [error, setError] = useState<string | null>(null);
-  const [projectData, setProjectData] = useState<ProjectData | null>(null); // Store project data
+  const [projectData, setProjectData] = useState<ProjectData | null>(null);
+  const [aiSuggestion, setAiSuggestion] = useState<string>(""); // ✅ Stores AI suggestion
+  const [code, setCode] = useState<string>(""); // ✅ Stores the user's code input
 
   const location = useLocation();
   const projectId = location.state?.projectId;
@@ -32,19 +34,25 @@ function CodeEditingPage() {
     if (projectId) {
       fetchProjectInfo(projectId);
     }
-  }, [projectId]); // Fetch project info when projectId is available
 
-  // Fetch project info
+    // ✅ Poll AI suggestions every 30 seconds
+    const interval = setInterval(() => {
+      if (code.trim()) {
+        fetchAISuggestions();
+      }
+    }, 30000); // Runs every 30 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [projectId, code]); // Runs when projectId or code changes
+
   const fetchProjectInfo = async (projectId: string) => {
     try {
       const response = await fetch("http://127.0.0.1:5000/projectinfo", {
-        method: "POST", // Again, using POST to send JSON data
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          projectId: projectId,
-        }),
+        body: JSON.stringify({ projectId }),
       });
 
       const result = await response.json();
@@ -56,15 +64,44 @@ function CodeEditingPage() {
     }
   };
 
+  const fetchAISuggestions = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/ai-suggestions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      const result = await response.json();
+      console.log("AI Suggestion:", result);
+      setAiSuggestion(result.suggestion);
+    } catch (error) {
+      console.error(error);
+      setError("Error fetching AI suggestion");
+    }
+  };
+
   return (
     <>
       <Sidebar />
       <Searchbar />
+      
+      {/* ✅ Passes `onFetchAISuggestions` to `CodeEditor` for manual fetch */}
+      <CodeEditor projectData={projectData} onCodeChange={setCode} onFetchAISuggestions={fetchAISuggestions} />
 
-      <CodeEditor projectData={projectData} />
+      {/* ✅ Button for manual AI fetch */}
+      <button onClick={fetchAISuggestions} className="analyze-btn">
+        Get AI Suggestion
+      </button>
+
+      {/* ✅ Displays AI suggestions */}
+      <AISuggestion suggestion={aiSuggestion} />
+
       <Question projectData={projectData} />
-      <AISuggestion />
     </>
   );
 }
+
 export default CodeEditingPage;
