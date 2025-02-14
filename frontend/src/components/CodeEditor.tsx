@@ -20,14 +20,15 @@ interface ProjectData {
 interface CodeEditorProps {
   projectData: ProjectData | null;
   onCodeChange: (code: string) => void; // Prop to send code updates
+  fetchAISuggestions: () => void; // Fetch AI suggestion when "Analyze" is clicked
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange, fetchAISuggestions }) => {
   const [code, setCode] = useState("// Write your code here...");
 
   const handleCodeChange = (value: string) => {
     setCode(value);
-    onCodeChange(value); // Send the code to parent (CodeEditingPage)
+    onCodeChange(value); // Send updated code to parent (CodeEditingPage)
   };
 
   if (!projectData) {
@@ -45,7 +46,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange }) =>
           onChange={handleCodeChange}
         />
       </div>
-      <button className="analyze-btn">Analyze</button>
+
+      {/* ✅ Analyze Button Calls AI Immediately */}
+      <button className="analyze-btn" onClick={fetchAISuggestions}>
+        Analyze
+      </button>
     </div>
   );
 };

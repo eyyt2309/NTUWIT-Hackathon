@@ -23,8 +23,14 @@ body {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 400px; /* Reduced width */
   text-align: center;
+  
 }
-
+.loginxxx{
+height: 1000px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 /* Reduce input box thickness & add more space */
 .email-input,
 .username-input,
