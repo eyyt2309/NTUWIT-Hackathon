@@ -140,13 +140,13 @@ def ai_suggestions():
     """ API Route to send a code snippet to Perplexity AI and return AI feedback. """
     try:
         data = request.get_json()
-        code_snippet = data.get("code")
+        code_snippet = data.get("code_snippet")
 
         if not code_snippet:
             return jsonify({"error": "Missing 'code' field in request body"}), 400
 
         # ✅ Call the function from ai.py
-        suggestion = backend.controller.ai.get_ai_suggestions(code_snippet)
+        suggestion = controller.ai.get_ai_suggestions(code_snippet)
 
         return jsonify({"suggestion": suggestion}), 200
 
