@@ -7,6 +7,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import "../css/CodeEditor.css"; // Ensure this CSS file exists
+
 function CommunityUpload() {
   const [userId, setUserId] = useState<string | null>(null);
   const [code, setCode] = useState("// Write your code here...");
@@ -23,7 +24,6 @@ function CommunityUpload() {
     sampleInput: "",
     sampleOutput: "",
     explanation: "",
-    code: "",
     lang_name: "",
   });
 
@@ -56,7 +56,7 @@ function CommunityUpload() {
     };
 
     try {
-      const response = await fetch("http://your-api-url/uploadProject", {
+      const response = await fetch("http://127.0.0.1:5000/uploadProject", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,10 +82,17 @@ function CommunityUpload() {
       <Searchbar />
       <div className="upload-container">
         <div className="form-container">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Title:</label>
-              <input type="text" placeholder="Enter Title:" />
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                placeholder="Enter Title"
+                required
+              />
             </div>
 
             <div className="form-group">
@@ -97,6 +104,7 @@ function CommunityUpload() {
                 value={formData.problemStatement}
                 onChange={handleChange}
                 placeholder="Enter Problem Statement"
+                required
               />
             </div>
 
@@ -111,9 +119,38 @@ function CommunityUpload() {
                 placeholder="Enter Description"
               />
             </div>
+
+            <div className="form-group">
+              <label>Sample Input:</label>
+              <input
+                type="text"
+                name="sampleInput"
+                value={formData.sampleInput}
+                onChange={handleChange}
+                placeholder="Enter Sample Input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Sample Output:</label>
+              <input
+                type="text"
+                name="sampleOutput"
+                value={formData.sampleOutput}
+                onChange={handleChange}
+                placeholder="Enter Sample Output"
+              />
+            </div>
+
             <div className="form-group">
               <label>Languages:</label>
-              <input type="text" placeholder="Enter Languages Used:" />
+              <input
+                type="text"
+                name="lang_name"
+                value={formData.lang_name}
+                onChange={handleChange}
+                placeholder="Enter Languages Used"
+              />
             </div>
 
             <div className="form-group toggle-group">
@@ -127,8 +164,13 @@ function CommunityUpload() {
                 </span>
               </div>
             </div>
+
+            <button className="analyze-btn" type="submit">
+              Submit
+            </button>
           </form>
         </div>
+
         <div className="codeEditor-container">
           <div className="code-container">
             <label className="code-label">Input Answer:</label>
@@ -140,13 +182,11 @@ function CommunityUpload() {
                 onChange={(value) => setCode(value)}
               />
             </div>
-
-            <button className="analyze-btn" onClick={handleSubmit}>
-              Submit
-            </button>
           </div>
         </div>
       </div>
+
+      {message && <p className="message">{message}</p>}
     </>
   );
 }
