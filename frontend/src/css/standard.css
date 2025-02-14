@@ -94,3 +94,12 @@ a.sidebar-link:hover {
 .search button i {
   font-size: 18px;
 }
+.container-fluid
+{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100%;
+  height: 1000px;
+  width: 100%;
+}
