@@ -1,30 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
-import "../css/CodeEditor.css"; // Ensure this CSS file exists
+import "../css/CodeEditor.css";
 
 interface ProjectData {
-  LANG_NAME: string; // Programming languages used (e.g., "HTML, CSS")
-  Project_Description: string; // Detailed description of the project
-  further_details: string; // Additional project details
-  model_answer: string; // Sample model answer (HTML code)
-  problem_statement: string; // Description of the problem statement
-  projectId: number; // Unique project ID
-  sample_input: string | null; // Sample input (if applicable)
-  sample_output: string | null; // Expected output (if applicable)
-  title: string; // Project title
-  userId: number; // Associated user ID
+  LANG_NAME: string;
+  Project_Description: string;
+  further_details: string;
+  model_answer: string;
+  problem_statement: string;
+  projectId: number;
+  sample_input: string | null;
+  sample_output: string | null;
+  title: string;
+  userId: number;
 }
 
-const CodeEditor: React.FC<{ projectData: ProjectData | null }> = ({
-  projectData,
-}) => {
+interface CodeEditorProps {
+  projectData: ProjectData | null;
+  onCodeChange: (code: string) => void; // ✅ Pass the updated code to parent
+  onFetchAISuggestions: () => void; // ✅ Trigger AI fetch manually
+}
+
+const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange, onFetchAISuggestions }) => {
   if (!projectData) {
     return <div>Loading code...</div>;
   }
 
   const [code, setCode] = useState("// Write your code here...");
+
+  useEffect(() => {
+    onCodeChange(code); // ✅ Send code updates to parent when code changes
+  }, [code, onCodeChange]);
 
   return (
     <div className="code-container">
@@ -38,7 +46,10 @@ const CodeEditor: React.FC<{ projectData: ProjectData | null }> = ({
         />
       </div>
 
-      <button className="analyze-btn">Analyze</button>
+      {/* ✅ Click button to fetch AI suggestions */}
+      <button className="analyze-btn" onClick={onFetchAISuggestions}>
+        Get AI Suggestion
+      </button>
     </div>
   );
 };
