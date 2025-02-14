@@ -4,6 +4,7 @@ import redis
 import controller.projectController
 import controller.userController
 import controller.dashboardController
+import aipart.ai
 from flask_cors import CORS
 
 
@@ -118,6 +119,39 @@ def getinfo():
 
 #     except Exception as e:
 #         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
+
+# @app.route("/ai-suggestions", methods=["POST"])
+# def ai_suggestions():
+#     """ API endpoint for AI code suggestions """
+#     data = request.get_json()
+#     code_snippet = data.get("code", "")
+
+#     if not code_snippet:
+#         return jsonify({"error": "No code provided"}), 400
+
+#     suggestion = get_ai_suggestions(code_snippet)
+#     return jsonify({"suggestion": suggestion})
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
+@app.route('/ai-suggestions', methods=['POST'])
+def ai_suggestions():
+    """ API Route to send a code snippet to Perplexity AI and return AI feedback. """
+    try:
+        data = request.get_json()
+        code_snippet = data.get("code")
+
+        if not code_snippet:
+            return jsonify({"error": "Missing 'code' field in request body"}), 400
+
+        # ✅ Call the function from ai.py
+        suggestion = aipart.ai.get_ai_suggestions(code_snippet)
+
+        return jsonify({"suggestion": suggestion}), 200
+
+    except Exception as e:
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
     
 @app.route('/uploadProject', methods=['POST'])
 def upload_project():
