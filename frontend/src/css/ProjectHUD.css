@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 .projecthud-container {
-  max-width: 500px;
-  margin-left: 21%;
-  margin-top: -90px;
-  left: auto;
-  right: auto;
-  position: relative;
+  padding-top: 30px;
+ display: grid;
+ grid-template-columns: 600px 500px;
+ grid-template-rows: 300px 500px; 
+ grid-gap: 30px;
+ padding-left: 20px;
+ /* justify-content: center; */
+ margin-left: 50px;
 }
+
 
 .projectsdone-average-container {
   display: flex;
@@ -31,6 +34,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 .projectsdone:hover,
@@ -63,13 +67,17 @@
 .projectsinfo-container {
   display: flex;
   justify-content: center;
-  margin: -350px 10px 100px 900px;
+  width: fit-content;
 }
 
 .projectsinfo-list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 20px;
+  width: fit-content;
+  height: fit-content;
+  margin: 0px;
+  padding: 0px;
 }
 
 .list-item:hover {
@@ -93,4 +101,24 @@
 .big-script {
   font-size: 50px;
   padding-right: 10px;
+}
+.a{
+  grid-column: 1;
+  grid-row: 1;
+}
+.b{
+  grid-column: 2;
+  grid-row: 2;
+}
+.flexrow
+{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+.flexcol
+{
+  display: flex;
+  flex-direction: column;
 }

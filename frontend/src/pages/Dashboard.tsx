@@ -19,7 +19,6 @@ function Dashboard() {
 
       <div className="dashboard_container">
         <ProjectHUD />
-        <RecentProjects />
       </div>
     </>
   );
