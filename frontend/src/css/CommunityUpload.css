@@ -4,10 +4,13 @@
   max-width: 900px;
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px 100px 20px auto;
+  margin: 0px;
   display: flex;
 }
-
+.upload-container
+{
+  margin-left: 300px;
+}
 form {
   display: flex;
   flex-direction: column;

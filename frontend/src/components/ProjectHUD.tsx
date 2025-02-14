@@ -10,6 +10,9 @@ function ProjectHUD() {
         </div>
         <div className="b flexrow">
           <div className=" flexcol">
+            <div className="statstitle">
+              <h2>Stats:</h2>
+            </div>
             <div className="projectsdone">
               <h1 className="title-projectsdone">12</h1>
               <p className="subscript">Projects Completed</p>
