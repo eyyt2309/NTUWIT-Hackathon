@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import Searchbar from "../components/Searchbar";
 import CodeEditor from "../components/CodeEditor";
 import Question from "../components/Question";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 interface ProjectData {
@@ -24,6 +24,7 @@ function CodeEditingPage() {
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
   const [code, setCode] = useState<string>(""); // Store latest code snippet
   const [aiSuggestion, setAISuggestion] = useState<string | null>(null); // Store AI response
+  const lastCodeRef = useRef<string>(""); // Stores last code to check for changes
 
   const location = useLocation();
   const projectId = location.state?.projectId;
@@ -52,24 +53,15 @@ function CodeEditingPage() {
     }
   };
 
-  // Poll AI API every 10 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (code.trim() !== "") {
-        fetchAISuggestions(code);
-      }
-    }, 30000); // 10 seconds
+  // Fetch AI suggestions when Analyze button is clicked
+  const fetchAISuggestions = async () => {
+    if (!code.trim()) return; // Do nothing if code is empty
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [code]); // Runs whenever `code` updates
-
-  // Fetch AI suggestions from Flask API
-  const fetchAISuggestions = async (codeSnippet: string) => {
     try {
       const response = await fetch("http://127.0.0.1:5000/ai-suggestions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code_snippet: codeSnippet }),
+        body: JSON.stringify({ code_snippet: code }),
       });
 
       const result = await response.json();
@@ -81,6 +73,18 @@ function CodeEditingPage() {
     }
   };
 
+  // Poll AI API every 15 seconds, but only if code has changed
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (code.trim() !== "" && code !== lastCodeRef.current) {
+        fetchAISuggestions();
+        lastCodeRef.current = code; // Update last known code
+      }
+    }, 15000); // 15 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [code]); // Runs whenever `code` updates
+
   return (
     <>
       <Sidebar />
@@ -88,7 +92,7 @@ function CodeEditingPage() {
 
       <div className="container">
         <Question projectData={projectData} />
-        <CodeEditor projectData={projectData} onCodeChange={setCode} />
+        <CodeEditor projectData={projectData} onCodeChange={setCode} fetchAISuggestions={fetchAISuggestions} />
 
         <div className="AIcontainer">
           <div className="aiHeader">
@@ -109,3 +113,4 @@ function CodeEditingPage() {
 }
 
 export default CodeEditingPage;
+
