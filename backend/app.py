@@ -145,7 +145,6 @@ def ai_suggestions():
         if not code_snippet:
             return jsonify({"error": "Missing 'code' field in request body"}), 400
 
-        # ✅ Call the function from ai.py
         suggestion = controller.ai.get_ai_suggestions(code_snippet)
 
         return jsonify({"suggestion": suggestion}), 200
