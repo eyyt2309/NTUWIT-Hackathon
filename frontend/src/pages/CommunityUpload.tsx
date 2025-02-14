@@ -10,12 +10,12 @@ import "../css/CodeEditor.css"; // Ensure this CSS file exists
 function CommunityUpload() {
   const [userId, setUserId] = useState<string | null>(null);
   const [code, setCode] = useState("// Write your code here...");
+  const [isPrivate, setIsPrivate] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setUserId(sessionStorage.getItem("userId"));
-  }, []); // Added missing dependency array
-  console.log(userId);
-  const [isPrivate, setIsPrivate] = useState(false);
+  }, []);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -24,7 +24,7 @@ function CommunityUpload() {
     sampleOutput: "",
     explanation: "",
     code: "",
-    isPrivate: false,
+    lang_name: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,27 +35,47 @@ function CommunityUpload() {
     }));
   };
 
-  const handleCodeChange = (newCode: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      code: newCode,
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!userId || !formData.title || !formData.problemStatement) {
+      setMessage("Error: Missing required fields");
+      return;
+    }
+
+    const payload = {
+      userId,
+      title: formData.title,
+      problem_statement: formData.problemStatement,
+      sample_input: formData.sampleInput,
+      sample_output: formData.sampleOutput,
+      further_details: formData.explanation,
+      model_answer: code,
+      lang_name: formData.lang_name,
+      Project_Description: formData.explanation,
+    };
+
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/upload",
-        formData
-      );
-      console.log("Upload successful:", response.data);
-      alert("Problem uploaded successfully!");
+      const response = await fetch("http://your-api-url/uploadProject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setMessage("Project uploaded successfully!");
+      } else {
+        setMessage(`Error: ${result.error}`);
+      }
     } catch (error) {
-      console.error("Error uploading:", error);
-      alert("Error uploading the problem!");
+      setMessage("Error: Unable to connect to the server.");
     }
   };
+
   return (
     <>
       <Sidebar />
@@ -121,7 +141,9 @@ function CommunityUpload() {
               />
             </div>
 
-            <button className="analyze-btn">Analyze</button>
+            <button className="analyze-btn" onClick={handleSubmit}>
+              Submit
+            </button>
           </div>
         </div>
       </div>
