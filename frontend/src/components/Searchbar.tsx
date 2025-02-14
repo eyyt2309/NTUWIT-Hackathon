@@ -17,6 +17,7 @@ function SearchBar() {
     },
     "/profile": { title: "Profile", subtitle: "View and edit your profile" },
     "/settings": { title: "Settings", subtitle: "Customize your experience" },
+    "/code": { title: "Code Editor", subtitle: "Learn by doing" },
   };
 
   const { title, subtitle } = pageDetails[location.pathname] || {
