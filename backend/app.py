@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import controller.communityuploadController
 import redis
 import controller.projectController
 import controller.userController
@@ -34,7 +35,7 @@ def authenticate():
     except Exception as e:
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
     
-@app.route('/projectinfo', methods=['GET'])
+@app.route('/projectinfo', methods=['POST'])
 def getprojinfo():
     try:
         data = request.get_json()
@@ -64,7 +65,7 @@ def getprojinfo():
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
     
 
-@app.route('/getRecentProjects', methods=['GET'])
+@app.route('/getRecentProjects', methods=['POST'])
 def getinfo():
     try:
         data = request.get_json()
@@ -117,7 +118,32 @@ def getinfo():
 #     except Exception as e:
 #         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
     
+@app.route('/uploadProject', methods=['POST'])
+def upload_project():
+    try:
+        data = request.get_json()
+        
+        userId = data.get('userId')
+        title = data.get('title')
+        problem_statement = data.get('problem_statement')
+        sample_input = data.get('sample_input')
+        sample_output = data.get('sample_output')
+        further_details = data.get('further_details')
+        model_answer = data.get('model_answer')
+        lang_name = data.get('lang_name')
 
+        if not userId or not title or not problem_statement:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+
+        if result:
+            return jsonify({'message': 'Project uploaded successfully'}), 201
+        else:
+            return jsonify({'error': 'Failed to upload project'}), 500
+
+    except Exception as e:
+        return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
