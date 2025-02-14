@@ -17,7 +17,7 @@ def get_ai_suggestions(code_snippet):
     payload = {
         "model": AI_SETTINGS["model"],
         "messages": [
-            {"role": "system", "content": "Provide a single-line improvement summary for the given code. The improvement should at max be 15 words. The improvements can be for variable naming, security purposes and even syntactical suggestions and fixes. The suggestion should not contain sophisticated jargon or hard to understand terms, it should be something a beginner should be able to understand"},
+            {"role": "system", "content": "Provide a single-line improvement summary for the given code unless the code is longer than 5 lines. The improvement not be unnecessarily long. The improvements can be for variable naming, security purposes and even syntactical suggestions and fixes. The suggestion should not contain sophisticated jargon or hard to understand terms, it should be something a beginner should be able to understand"},
             {"role": "user", "content": f"Code:\n{code_snippet}\n\nWhat can be improved?"}
         ],
         "max_tokens": AI_SETTINGS["max_tokens"],
