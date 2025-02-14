@@ -2,7 +2,6 @@ import "../css/CodeEditingPage.css";
 import Sidebar from "../components/Sidebar";
 import Searchbar from "../components/Searchbar";
 import CodeEditor from "../components/CodeEditor";
-import AISuggestion from "../components/AISuggestion";
 import Question from "../components/Question";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -22,7 +21,9 @@ interface ProjectData {
 
 function CodeEditingPage() {
   const [error, setError] = useState<string | null>(null);
-  const [projectData, setProjectData] = useState<ProjectData | null>(null); // Store project data
+  const [projectData, setProjectData] = useState<ProjectData | null>(null);
+  const [code, setCode] = useState<string>(""); // Store latest code snippet
+  const [aiSuggestion, setAISuggestion] = useState<string | null>(null); // Store AI response
 
   const location = useLocation();
   const projectId = location.state?.projectId;
@@ -32,19 +33,14 @@ function CodeEditingPage() {
     if (projectId) {
       fetchProjectInfo(projectId);
     }
-  }, [projectId]); // Fetch project info when projectId is available
+  }, [projectId]);
 
-  // Fetch project info
   const fetchProjectInfo = async (projectId: string) => {
     try {
       const response = await fetch("http://127.0.0.1:5000/projectinfo", {
-        method: "POST", // Again, using POST to send JSON data
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          projectId: projectId,
-        }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ projectId: projectId }),
       });
 
       const result = await response.json();
@@ -56,15 +52,53 @@ function CodeEditingPage() {
     }
   };
 
+  // Poll AI API every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (code.trim() !== "") {
+        fetchAISuggestions(code);
+      }
+    }, 30000); // 10 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [code]); // Runs whenever `code` updates
+
+  // Fetch AI suggestions from Flask API
+  const fetchAISuggestions = async (codeSnippet: string) => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/ai-suggestions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code_snippet: codeSnippet }),
+      });
+
+      const result = await response.json();
+      console.log("AI Suggestion:", result.suggestion);
+      setAISuggestion(result.suggestion);
+    } catch (error) {
+      console.error("AI API Error:", error);
+      setAISuggestion("Error fetching AI suggestions.");
+    }
+  };
+
   return (
     <>
       <Sidebar />
       <Searchbar />
 
-      <CodeEditor projectData={projectData} />
-      <Question projectData={projectData} />
-      <AISuggestion />
+      <div className="container">
+        <Question projectData={projectData} />
+        <CodeEditor projectData={projectData} onCodeChange={setCode} />
+
+        <div className="AIcontainer">
+          <h1 className="question-header">AI Assistant</h1>
+          <div className="ai-response-box">
+            {aiSuggestion ? <p>{aiSuggestion}</p> : <p>No AI suggestions yet...</p>}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
+
 export default CodeEditingPage;

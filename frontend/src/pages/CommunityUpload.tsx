@@ -1,16 +1,20 @@
 import "../css/CommunityUpload.css";
-import CodeEditor from "../components/CodeEditor";
 import Sidebar from "../components/Sidebar";
 import Searchbar from "../components/Searchbar";
 import { useEffect, useState } from "react";
 
+import CodeMirror from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import "../css/CodeEditor.css"; // Ensure this CSS file exists
 function CommunityUpload() {
   const [userId, setUserId] = useState<string | null>(null);
+  const [code, setCode] = useState("// Write your code here...");
 
-    useEffect(() => {
-      setUserId(sessionStorage.getItem("userId"));
-    }, []); // Added missing dependency array
-    console.log(userId);
+  useEffect(() => {
+    setUserId(sessionStorage.getItem("userId"));
+  }, []); // Added missing dependency array
+  console.log(userId);
   const [isPrivate, setIsPrivate] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -92,8 +96,6 @@ function CommunityUpload() {
               <input type="text" placeholder="Enter Languages Used:" />
             </div>
 
-
-
             <div className="form-group toggle-group">
               <label>Set As Private</label>
               <div
@@ -107,10 +109,21 @@ function CommunityUpload() {
             </div>
           </form>
         </div>
-      </div>
+        <div className="codeEditor-container">
+          <div className="code-container">
+            <label className="code-label">Input Answer:</label>
+            <div className="editor-wrapper">
+              <CodeMirror
+                value={code}
+                extensions={[javascript()]}
+                theme={vscodeDark}
+                onChange={(value) => setCode(value)}
+              />
+            </div>
 
-      <div className="codeEditor-container">
-        <CodeEditor />
+            <button className="analyze-btn">Analyze</button>
+          </div>
+        </div>
       </div>
     </>
   );
