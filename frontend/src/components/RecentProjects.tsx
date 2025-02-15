@@ -10,70 +10,69 @@ function RecentProjects() {
   const [title, setTitle] = useState("");
   const [languages, setLanguages] = useState("");
   const [percentage, setPercentage] = useState("");
-  const [projectId, setProjectid] = useState(null);
+  const [projectId, setProjectId] = useState("");
   const [userId, setUserId] = useState<string | null>(null);
+
   const fetchProjects = async (userId: string) => {
     try {
       const response = await fetch("http://127.0.0.1:5000/getRecentProjects", {
-        method: "POST", // Using POST to send body as JSON
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId: userId,
-        }),
+        body: JSON.stringify({ userId }),
       });
 
-      console.log("Response status:", response.status);
+      if (!response.ok) {
+        throw new Error("Failed to fetch projects");
+      }
+
       const result = await response.json();
-      console.log(result);
+      console.log("Fetch projects result:", result);
 
-      if (response.ok) {
-        console.log("Fetch projects successful");
-        const fetchedProjectId = result.projectId1;
-        setProjectid(result.projectId1);
+      if (result.projectId1) {
+        setProjectId(result.projectId1);
         setPercentage(result.percentage1);
-
-        // Fetch project info using the new projectId
-        if (result.projectid1) {
-          fetchProjectInfo(fetchedProjectId);
-        }
+        fetchProjectInfo(result.projectId1);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching projects:", error);
       setError("Error: Failed to fetch projects");
     }
   };
 
-  // Fetch project info
   const fetchProjectInfo = async (projectId: string) => {
     try {
       const response = await fetch("http://127.0.0.1:5000/projectinfo", {
-        method: "POST", // Again, using POST to send JSON data
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          projectId: projectId,
-        }),
+        body: JSON.stringify({ projectId }),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch project info");
+      }
 
       const result = await response.json();
       console.log("Project info:", result);
+
+      setTitle(result.title);
+      setLanguages(result.LANG_NAME);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching project info:", error);
       setError("Error: Failed to fetch project info");
     }
   };
 
   useEffect(() => {
     const storedUserId = sessionStorage.getItem("userId");
-    setUserId(storedUserId);
-
     if (storedUserId) {
+      setUserId(storedUserId);
       fetchProjects(storedUserId);
     }
-  }, []);
+  }, []); // Empty dependency array to run only on mount
   return (
     <div className="recentprojects-container">
       <div className="recentprojects-header">
@@ -88,10 +87,9 @@ function RecentProjects() {
                 src={image1}
                 alt="Stock picture of course"
               ></img>
-              <h1 className="project-title">{}</h1>
-              <h1 className="project-subscript">
-                {} <p className="percentage-point">{percentage}%</p>
-              </h1>
+              <h1 className="project-title">{title}</h1>
+              <h1 className="project-subscript">{languages}</h1>
+              <p className="percentage-point">{percentage}%</p>
             </Link>
           )}
         </button>
@@ -103,10 +101,9 @@ function RecentProjects() {
                 src={image2}
                 alt="Stock picture of course"
               ></img>
-              <h1 className="project-title">{}</h1>
-              <h1 className="project-subscript">
-                {} <p className="percentage-point">{percentage}%</p>
-              </h1>
+              <h1 className="project-title">{title}</h1>
+              <h1 className="project-subscript">{languages}</h1>
+              <p className="percentage-point">{percentage}%</p>
             </Link>
           )}
         </button>

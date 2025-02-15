@@ -4,6 +4,7 @@ import redis
 import controller.projectController
 import controller.userController
 import controller.dashboardController
+import controller.ai
 from flask_cors import CORS
 
 
@@ -92,32 +93,22 @@ def getinfo():
 
     except Exception as e:
         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
-# @app.route('/registerNewProject', methods=['POST'])
-# def getinfo():
-#     try:
-#         data = request.get_json()
-#         userId = data.get('userId')
+@app.route('/ai-suggestions', methods=['POST'])
+def ai_suggestions():
+    """ API Route to send a code snippet to Perplexity AI and return AI feedback. """
+    try:
+        data = request.get_json()
+        code_snippet = data.get("code_snippet")
 
-#         if not userId:
-#             return jsonify({'error': 'Missing userid'}), 400
-#         data = controller.projectController.retrieveSubmittedProject(userId)
-#         print(data)
-#         project_dict = {}
-#         i=1
-#         for proj in data:
-#             print("in for loop")
-#             project_dict["projectId"+str(i)] = proj[0]
-#             project_dict["currentCode"+str(i)] = proj[1]
-#             project_dict["percentage"+str(i)] = proj[2]
-#             i+=1
+        if not code_snippet:
+            return jsonify({"error": "Missing 'code' field in request body"}), 400
 
-#         if data:  # `auth == True` is redundant, just use `if auth`
-#             return project_dict, 200
-#         else:
-#             return jsonify({'NIL': 'No data found'}), 401
+        suggestion = controller.ai.get_ai_suggestions(code_snippet)
 
-#     except Exception as e:
-#         return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
+        return jsonify({"suggestion": suggestion}), 200
+
+    except Exception as e:
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
     
 @app.route('/uploadProject', methods=['POST'])
 def upload_project():
@@ -137,7 +128,7 @@ def upload_project():
         if not userId or not title or not problem_statement:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name)
+        result = controller.communityuploadController.communityUpload(userId, title, problem_statement, sample_input, sample_output, further_details, model_answer, lang_name,Project_Description)
 
         if result:
             return jsonify({'message': 'Project uploaded successfully'}), 201

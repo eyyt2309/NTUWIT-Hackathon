@@ -17,7 +17,7 @@ def get_ai_suggestions(code_snippet):
     payload = {
         "model": AI_SETTINGS["model"],
         "messages": [
-            {"role": "system", "content": "Provide a single-line improvement summary for the given code. The improvement should at max be 15 words. The improvements can be for variable naming, security purposes and even syntactical suggestions and fixes. The suggestion should not contain sophisticated jargon or hard to understand terms, it should be something a beginner should be able to understand"},
+            {"role": "system", "content": "Provide a single-line improvement summary for the given code unless the code is longer than 5 lines. The improvement not be unnecessarily long. The improvements can be for variable naming, security purposes and even syntactical suggestions and fixes. The suggestion should not contain sophisticated jargon or hard to understand terms, it should be something a beginner should be able to understand. I do not want you to reply with here is a single improvement.Simply reply with the suggestion as succinctly and do not try to do markup and format the output, just output a string that is a maxium of 20 words. "},
             {"role": "user", "content": f"Code:\n{code_snippet}\n\nWhat can be improved?"}
         ],
         "max_tokens": AI_SETTINGS["max_tokens"],
@@ -36,6 +36,7 @@ def get_ai_suggestions(code_snippet):
             ai_response = response.json()
             if "choices" in ai_response and len(ai_response["choices"]) > 0:
                 suggestion = ai_response["choices"][0]["message"]["content"]
+                print(suggestion)
                 return suggestion.strip()  # ✅ Short and clean output
             else:
                 return "⚠️ No valid AI response received."
@@ -75,5 +76,10 @@ if __name__ == "__main__":
     # test_api()
     
     print("\n💡 AI Suggestion for Code:")
+<<<<<<< HEAD:aipart/ai.py
     sample_code = "#include <stdio.h>"
     print(get_ai_suggestions(sample_code))
+=======
+    # sample_code = "def add(a, b): return a+b"
+    # print(get_ai_suggestions(sample_code))
+>>>>>>> main:backend/controller/ai.py

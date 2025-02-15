@@ -1,0 +1,44 @@
+.container
+{
+  margin-left: 300px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.AIcontainer
+{
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  padding: 30px;
+  background-color: #ccc;
+
+}
+.aiHeader
+{
+  /* height: 100px; */
+  background-color: #FFF;
+  border-radius: 8px;
+  padding-left:10px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin-bottom: 10px;
+}
+.p
+.h1
+{
+  margin: 0px;
+  padding: 0px;
+}
+.ai-response-box
+{
+  width: auto;
+  height: 500px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+
+
+}

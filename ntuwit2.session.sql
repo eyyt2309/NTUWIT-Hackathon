@@ -34,6 +34,6 @@ VALUES
 -- @block
 SHOW FULL TABLES;
 -- @block
-SELECT * FROM SubmittedProjects;
+SELECT * FROM Projects;
 -- @block
-SHOW COLUMNS FROM Projects;
+SHOW COLUMNS FROM Users;

@@ -2,9 +2,9 @@
   background-color: #515151;
   padding: 20px;
   border-radius: 10px;
-  background: linear-gradient(45deg, #b146f4, #e26ed5);
-  max-width: 700px;
-  margin: 20px 100px 20px 500px;
+  background: linear-gradient(45deg, #CCC, #e26ed5);
+  width: 1020px;
+  margin: 0px;
 }
 
 .code-label {
@@ -23,7 +23,8 @@
   background: #1e1e1e;
   border-radius: 5px;
   padding: 10px;
-  min-height: 300px;
+  min-height: 500px;
+  width: 1000px;
 }
 
 .analyze-btn {

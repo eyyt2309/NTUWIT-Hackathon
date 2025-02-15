@@ -136,3 +136,5 @@ config.json
 aipart/__pycache__/
 venv/
 *.deb
+
+replace.txt

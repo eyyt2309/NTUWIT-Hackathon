@@ -52,6 +52,7 @@ function Login() {
   };
 
   return (
+    <div className="loginxxx">
     <div className="login-container">
       <h1 className="hardcoders-header">!HardCoders</h1>
 
@@ -79,6 +80,7 @@ function Login() {
           {loading ? "Logging in..." : "Log In"}
         </button>
       </form>
+    </div>
     </div>
   );
 }

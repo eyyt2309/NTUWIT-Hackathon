@@ -1,0 +1,20 @@
+# pack-refs with: peeled fully-peeled sorted 
+f269393d5a283ad740ed500e33ea5bbb41e8f839 refs/heads/ProjectPage
+651200b89f51f5c4ccef8da6e17ec19d5efedbab refs/heads/aipart
+cb12d6cc07a1cb85d32a3fc9ca4f09d2d8153e4a refs/heads/css
+9575755b9b1343826596775c4e7ba1d24e55dee0 refs/heads/css1
+c8f9b493e910fe3ca3877a56c5ca502cc74d4a96 refs/heads/css8
+1f29c0848ba07e22a3944e6ac3e4337cd2b1d1c8 refs/heads/main
+9789093db96d7ecac468a1609fbd19addc6cff70 refs/heads/profileCSS
+cc4b606b93dc2869feae504a9c280eb4839519b5 refs/heads/sidebar-branch
+29544d5aaef75359def893ccedb12a40c99caf96 refs/pull/1/head
+60d46800d39bb053b7f69abd0569fcbf01bbf7a0 refs/pull/10/head
+c8f9b493e910fe3ca3877a56c5ca502cc74d4a96 refs/pull/11/head
+4790f583f54665e5063cddeb85b633e129e78e89 refs/pull/2/head
+f269393d5a283ad740ed500e33ea5bbb41e8f839 refs/pull/3/head
+9db100cfee6e092e7b14d3d7e1fc256b58bfd981 refs/pull/4/head
+1fb6fea2ca160792657c3f4a57013f14bb973906 refs/pull/5/head
+2802ec79c163fdd9e9540bc149f08f7b2063f6ed refs/pull/6/head
+cb12d6cc07a1cb85d32a3fc9ca4f09d2d8153e4a refs/pull/7/head
+9575755b9b1343826596775c4e7ba1d24e55dee0 refs/pull/8/head
+9789093db96d7ecac468a1609fbd19addc6cff70 refs/pull/9/head

@@ -19,20 +19,21 @@ interface ProjectData {
 
 interface CodeEditorProps {
   projectData: ProjectData | null;
-  onCodeChange: (code: string) => void; // ✅ Pass the updated code to parent
-  onFetchAISuggestions: () => void; // ✅ Trigger AI fetch manually
+  onCodeChange: (code: string) => void; // Prop to send code updates
+  fetchAISuggestions: () => void; // Fetch AI suggestion when "Analyze" is clicked
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange, onFetchAISuggestions }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange, fetchAISuggestions }) => {
+  const [code, setCode] = useState("// Write your code here...");
+
+  const handleCodeChange = (value: string) => {
+    setCode(value);
+    onCodeChange(value); // Send updated code to parent (CodeEditingPage)
+  };
+
   if (!projectData) {
     return <div>Loading code...</div>;
   }
-
-  const [code, setCode] = useState("// Write your code here...");
-
-  useEffect(() => {
-    onCodeChange(code); // ✅ Send code updates to parent when code changes
-  }, [code, onCodeChange]);
 
   return (
     <div className="code-container">
@@ -42,13 +43,13 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ projectData, onCodeChange, onFe
           value={code}
           extensions={[javascript()]}
           theme={vscodeDark}
-          onChange={(value) => setCode(value)}
+          onChange={handleCodeChange}
         />
       </div>
 
-      {/* ✅ Click button to fetch AI suggestions */}
-      <button className="analyze-btn" onClick={onFetchAISuggestions}>
-        Get AI Suggestion
+      {/* ✅ Analyze Button Calls AI Immediately */}
+      <button className="analyze-btn" onClick={fetchAISuggestions}>
+        Analyze
       </button>
     </div>
   );
