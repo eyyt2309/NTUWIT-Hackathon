@@ -2,7 +2,7 @@ import requests
 import json
 
 # Perplexity AI API Configuration
-API_KEY = REMOVED" | Set-Content replace.txt"  # 🔹 Replace with your real API key
+API_KEY = ""  # 🔹 Replace with API key
 PERPLEXITY_URL = "https://api.perplexity.ai/chat/completions"
 
 AI_SETTINGS = {
