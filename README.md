@@ -24,3 +24,10 @@ cd frontend
 npm install
 npm run dev
 
+```sh
+cd frontend
+npm install
+npm run dev
+
+
+
