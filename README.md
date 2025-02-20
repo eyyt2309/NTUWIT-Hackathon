@@ -14,26 +14,13 @@ Team Hardcoders
 | Raja Muthu | [@mu7hu](https://github.com/mu7hu) |
 
 
-### For Frontend:
-**Run on Terminal**
+# Project Setup Guide
+
+## Frontend Setup
+To set up and run the frontend, execute the following commands in the terminal:
+
+```sh
 cd frontend
 npm install
 npm run dev
 
-
-### For Backend:
-**Run on Terminal**
-cd backend
-env\Scripts\activate
-pip install
-
-
-### AI Portion
-#### In Main Folder 
-**Make a virtual environment first**
-python -m venv venv 
-**Activate virtual environment**
-**For Windows**:.\venv\Scripts\activate
-**For Mac**:source venv/bin/activate
-**Install files**
-pip install -r aipart/requirements.txt
